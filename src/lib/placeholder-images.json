@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "admin-avatar",
+      "description": "Admin user avatar",
+      "imageUrl": "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ0NTkzNjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "banner-1",
+      "description": "Promotional banner 1",
+      "imageUrl": "https://images.unsplash.com/photo-1541692033570-5b2e9c4e2aa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHByb21vdGlvbnxlbnwwfHx8fDE3NjQ1NTQ2NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract promotion"
+    },
+    {
+      "id": "banner-2",
+      "description": "Promotional banner 2",
+      "imageUrl": "https://images.unsplash.com/photo-1607082349566-187342175e2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzYWxlJTIwZGlzY291bnR8ZW58MHx8fHwxNzY0NTU0NjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sale discount"
+    },
+    {
+      "id": "banner-3",
+      "description": "Promotional banner 3",
+      "imageUrl": "https://images.unsplash.com/photo-1763888477145-25f2a823ad31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwb2ZmZXJ8ZW58MHx8fHwxNzY0NTU0NjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "product offer"
+    }
+  ]
 }
