@@ -2,7 +2,7 @@
 
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { ChartTooltipContent } from "@/components/ui/chart"
+import { ChartTooltipContent, ChartContainer, type ChartConfig } from "@/components/ui/chart"
 
 const data = [
   { month: "Jan", sales: 4000 },
@@ -14,6 +14,13 @@ const data = [
   { month: "Jul", sales: 6500 },
 ]
 
+const chartConfig = {
+  sales: {
+    label: "Sales",
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig
+
 export function SalesOverviewChart() {
   return (
     <Card>
@@ -22,37 +29,39 @@ export function SalesOverviewChart() {
         <CardDescription>Total sales over the last 7 months.</CardDescription>
       </CardHeader>
       <CardContent>
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
-            <XAxis
-              dataKey="month"
-              stroke="hsl(var(--muted-foreground))"
-              fontSize={12}
-              tickLine={false}
-              axisLine={false}
-            />
-            <YAxis
-              stroke="hsl(var(--muted-foreground))"
-              fontSize={12}
-              tickLine={false}
-              axisLine={false}
-              tickFormatter={(value) => `$${value / 1000}k`}
-            />
-            <Tooltip 
-                cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1.5, strokeDasharray: '3 3' }}
-                content={<ChartTooltipContent />} 
-            />
-            <Line
-              type="monotone"
-              dataKey="sales"
-              stroke="hsl(var(--primary))"
-              strokeWidth={2}
-              dot={{ r: 4, fill: 'hsl(var(--primary))' }}
-              activeDot={{ r: 6, fill: 'hsl(var(--primary))' }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+            <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={data}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
+                <XAxis
+                dataKey="month"
+                stroke="hsl(var(--muted-foreground))"
+                fontSize={12}
+                tickLine={false}
+                axisLine={false}
+                />
+                <YAxis
+                stroke="hsl(var(--muted-foreground))"
+                fontSize={12}
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(value) => `$${value / 1000}k`}
+                />
+                <Tooltip 
+                    cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1.5, strokeDasharray: '3 3' }}
+                    content={<ChartTooltipContent />} 
+                />
+                <Line
+                type="monotone"
+                dataKey="sales"
+                stroke="hsl(var(--primary))"
+                strokeWidth={2}
+                dot={{ r: 4, fill: 'hsl(var(--primary))' }}
+                activeDot={{ r: 6, fill: 'hsl(var(--primary))' }}
+                />
+            </LineChart>
+            </ResponsiveContainer>
+        </ChartContainer>
       </CardContent>
     </Card>
   )
