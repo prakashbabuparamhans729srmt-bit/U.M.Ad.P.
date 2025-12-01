@@ -42,7 +42,7 @@ export function AdminNav() {
       <SidebarContent className="p-2">
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/dashboard" legacyBehavior passHref>
+            <Link href="/dashboard" passHref>
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard')} tooltip="Dashboard">
                     <a>
                         <LayoutDashboard />
@@ -73,7 +73,7 @@ export function AdminNav() {
               <AccordionContent className="pl-6">
                 <SidebarMenu>
                   <SidebarMenuItem>
-                    <Link href="/categories" legacyBehavior passHref>
+                    <Link href="/categories" passHref>
                         <SidebarMenuButton asChild isActive={pathname.startsWith('/categories')} className="h-8">
                             <a>
                                 <List className="mr-2" />
@@ -83,7 +83,7 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="#" legacyBehavior passHref>
+                    <Link href="#" passHref>
                         <SidebarMenuButton asChild className="h-8">
                             <a>
                                 <List className="mr-2" />
@@ -93,7 +93,7 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="#" legacyBehavior passHref>
+                    <Link href="#" passHref>
                         <SidebarMenuButton asChild className="h-8">
                             <a>
                                 <Plus className="mr-2" />
@@ -142,7 +142,7 @@ export function AdminNav() {
       <SidebarFooter className="p-2">
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/settings" legacyBehavior passHref>
+            <Link href="/settings" passHref>
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/settings')} tooltip="Settings">
                     <a>
                         <Settings />
