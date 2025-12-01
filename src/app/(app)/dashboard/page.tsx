@@ -11,13 +11,15 @@ import {
   MessageSquare,
   Landmark,
   CalendarClock,
-  CircleDollarSign,
+  IndianRupee,
   ImageIcon,
 } from 'lucide-react';
 import { MetricCard } from './components/metric-card';
+import { SalesOverviewChart } from './components/sales-overview-chart';
+import { OrderStatsChart } from './components/order-stats-chart';
 
 const metrics = [
-  { title: 'Total Sales', value: '$ 534', icon: CircleDollarSign },
+  { title: 'Total Sales', value: '₹ 534', icon: IndianRupee },
   { title: 'Total Banners', value: '3', icon: ImageIcon },
   { title: 'Total Main Category', value: '9', icon: List },
   { title: 'Total Payment Gateway', value: '5', icon: Landmark },
@@ -71,6 +73,10 @@ export default function DashboardPage() {
             icon={metric.icon}
           />
         ))}
+      </div>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <SalesOverviewChart />
+        <OrderStatsChart />
       </div>
     </div>
   );
