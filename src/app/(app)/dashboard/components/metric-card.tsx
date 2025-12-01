@@ -1,31 +1,21 @@
-import type { FC, SVGProps } from "react";
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
-  
+import type { FC } from 'react';
+
 interface MetricCardProps {
-    title: string;
-    value: string;
-    change?: string;
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  title: string;
+  value: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
-export function MetricCard({ title, value, change, icon: Icon }: MetricCardProps) {
-    return (
-        <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{title}</CardTitle>
-                <Icon className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-                <div className="text-2xl font-bold">{value}</div>
-                {change && (
-                    <p className="text-xs text-muted-foreground">{change}</p>
-                )}
-            </CardContent>
-        </Card>
-    )
+export function MetricCard({ title, value, icon: Icon }: MetricCardProps) {
+  return (
+    <div className="flex items-center gap-4 rounded-lg bg-accent p-4 text-accent-foreground shadow-sm">
+      <div className="flex h-12 w-12 items-center justify-center rounded-md bg-background text-foreground">
+        <Icon className="h-6 w-6" />
+      </div>
+      <div>
+        <div className="text-sm text-muted-foreground">{title}</div>
+        <div className="text-2xl font-bold">{value}</div>
+      </div>
+    </div>
+  );
 }
