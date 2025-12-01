@@ -45,12 +45,12 @@ import {
           <SidebarMenu>
             {links.map((link) => (
               <SidebarMenuItem key={link.href}>
-                <Link href={link.href} passHref legacyBehavior>
-                  <SidebarMenuButton asChild isActive={pathname.startsWith(link.href)} tooltip={link.label}>
+                <SidebarMenuButton asChild isActive={pathname.startsWith(link.href)} tooltip={link.label}>
+                  <Link href={link.href}>
                     <link.icon />
                     <span>{link.label}</span>
-                  </SidebarMenuButton>
-                </Link>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
@@ -58,12 +58,12 @@ import {
         <SidebarFooter className='p-2'>
           <SidebarMenu>
               <SidebarMenuItem>
-                  <Link href="/settings" passHref legacyBehavior>
-                      <SidebarMenuButton asChild isActive={pathname.startsWith('/settings')} tooltip="Settings">
-                          <Settings />
-                          <span>Settings</span>
-                      </SidebarMenuButton>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/settings')} tooltip="Settings">
+                  <Link href="/settings">
+                      <Settings />
+                      <span>Settings</span>
                   </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
