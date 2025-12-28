@@ -33,7 +33,7 @@ export default function AdminHeader() {
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6 sticky top-0 z-30">
-        {isMobile && <SidebarTrigger />}
+        <SidebarTrigger />
         <h1 className="text-xl font-semibold capitalize hidden md:block">{pageTitle}</h1>
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
             <form className="ml-auto flex-1 sm:flex-initial">
