@@ -12,7 +12,7 @@ export default function AppLayout({
     <SidebarProvider>
       <Sidebar side="left" collapsible="icon" variant="sidebar">
         <AdminNav />
-        <SidebarRail />
+        <SidebarRail onHover="expand"/>
       </Sidebar>
       <SidebarInset className="bg-background">
         <AdminHeader />
