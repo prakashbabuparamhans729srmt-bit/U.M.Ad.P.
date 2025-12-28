@@ -69,7 +69,7 @@ export default function AdminHeader() {
                     <DropdownMenuItem>Support</DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                        <Link href="/login">Logout</Link>
+                        <Link href="/">Logout</Link>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
