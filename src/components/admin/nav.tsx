@@ -19,6 +19,11 @@ import {
   ImageIcon,
   Users,
   Settings,
+  ShoppingCart,
+  Map,
+  CreditCard,
+  MessageSquare,
+  Landmark,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -39,14 +44,24 @@ export function AdminNav() {
           <h1 className="text-xl font-bold">UCLAP</h1>
         </div>
       </SidebarHeader>
-      <SidebarContent className="p-2">
+      <SidebarContent className="p-2 no-scrollbar">
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/dashboard" passHref>
+            <Link href="/dashboard">
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard')} tooltip="Dashboard">
                     <span>
                         <LayoutDashboard />
                         <span>Dashboard</span>
+                    </span>
+                </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <Link href="/orders">
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/orders')} tooltip="Orders">
+                    <span>
+                        <ShoppingCart />
+                        <span>Orders</span>
                     </span>
                 </SidebarMenuButton>
             </Link>
@@ -59,7 +74,7 @@ export function AdminNav() {
             <AccordionItem value="city-section" className="border-none">
               <Link href="/orders">
                   <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
-                    <Building className="mr-2" /> City
+                    <Map className="mr-2" /> City
                   </AccordionTrigger>
               </Link>
               <AccordionContent className="p-0"></AccordionContent>
@@ -75,17 +90,17 @@ export function AdminNav() {
               <AccordionContent className="pl-6">
                 <SidebarMenu>
                   <SidebarMenuItem>
-                    <Link href="/categories" passHref>
+                    <Link href="/categories">
                         <SidebarMenuButton asChild isActive={pathname.startsWith('/categories')} className="h-8">
-                            <span>
+                           <span>
                                 <List className="mr-2" />
                                 <span>Sub Category</span>
-                            </span>
+                           </span>
                         </SidebarMenuButton>
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="/orders" passHref>
+                    <Link href="/orders">
                         <SidebarMenuButton asChild className="h-8">
                             <span>
                                 <List className="mr-2" />
@@ -95,7 +110,7 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="/orders" passHref>
+                    <Link href="/orders">
                         <SidebarMenuButton asChild className="h-8">
                             <span>
                                 <Plus className="mr-2" />
@@ -145,12 +160,45 @@ export function AdminNav() {
             </Link>
           </SidebarGroup>
 
+          <SidebarMenuItem>
+            <Link href="/#">
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/#')} tooltip="Credit Packages">
+                    <span>
+                        <CreditCard />
+                        <span>Credit Packages</span>
+                    </span>
+                </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
+
+          <SidebarMenuItem>
+            <Link href="/#">
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/#')} tooltip="Testimonials">
+                    <span>
+                        <MessageSquare />
+                        <span>Testimonials</span>
+                    </span>
+                </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
+
+          <SidebarMenuItem>
+            <Link href="/#">
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/#')} tooltip="Payment Gateway">
+                    <span>
+                        <Landmark />
+                        <span>Payment Gateway</span>
+                    </span>
+                </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
+
         </Accordion>
       </SidebarContent>
       <SidebarFooter className="p-2">
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/settings" passHref>
+            <Link href="/settings">
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/settings')} tooltip="Settings">
                     <span>
                         <Settings />
