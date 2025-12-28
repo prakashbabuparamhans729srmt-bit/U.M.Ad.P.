@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Mountain, LayoutGrid, Users, ShoppingCart, BarChart, FileText, Star } from "lucide-react";
+import { Mountain, LayoutGrid, Users, ShoppingCart, BarChart, FileText, Star, Settings, Palette, Shield } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function LandingPage() {
@@ -79,37 +79,67 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-              <div className="grid gap-1 text-center">
-                  <LayoutGrid className="h-10 w-10 mx-auto text-primary" />
-                <h3 className="text-xl font-bold">Comprehensive Dashboard</h3>
-                <p className="text-muted-foreground">Get a bird's-eye view of your entire operation with our insightful and detailed dashboard.</p>
-              </div>
-              <div className="grid gap-1 text-center">
-                <ShoppingCart className="h-10 w-10 mx-auto text-primary" />
-                <h3 className="text-xl font-bold">Order Management</h3>
-                <p className="text-muted-foreground">Track, manage, and fulfill orders with ease, from pending to completion.</p>
-              </div>
-              <div className="grid gap-1 text-center">
-                <Users className="h-10 w-10 mx-auto text-primary" />
-                <h3 className="text-xl font-bold">Partner & Customer CRM</h3>
-                <p className="text-muted-foreground">Manage your relationships with partners and customers all in one place.</p>
-              </div>
-              <div className="grid gap-1 text-center">
-                <BarChart className="h-10 w-10 mx-auto text-primary" />
-                <h3 className="text-xl font-bold">Sales Analytics</h3>
-                <p className="text-muted-foreground">Dive deep into your sales data with powerful charts and analytics.</p>
-              </div>
-              <div className="grid gap-1 text-center">
-                <FileText className="h-10 w-10 mx-auto text-primary" />
-                <h3 className="text-xl font-bold">Content Management</h3>
-                <p className="text-muted-foreground">Easily update banners, testimonials, and other content across your site.</p>
-              </div>
-              <div className="grid gap-1 text-center">
-                <Users className="h-10 w-10 mx-auto text-primary" />
-                <h3 className="text-xl font-bold">User Management</h3>
-                <p className="text-muted-foreground">Control access and permissions for your team members with robust user roles.</p>
-              </div>
+            <div className="mx-auto grid max-w-sm items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3 py-12">
+                <Card>
+                    <CardHeader className="pb-4">
+                        <LayoutGrid className="h-8 w-8 mb-2 text-primary" />
+                        <CardTitle>Dashboard</CardTitle>
+                        <CardDescription>Get a bird's-eye view of your entire operation with our insightful and detailed dashboard.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Image src="https://picsum.photos/seed/feat1/600/400" alt="Dashboard Feature" width={600} height={400} className="rounded-md" data-ai-hint="analytics dashboard" />
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="pb-4">
+                        <ShoppingCart className="h-8 w-8 mb-2 text-primary" />
+                        <CardTitle>Order Management</CardTitle>
+                        <CardDescription>Track, manage, and fulfill orders with ease, from pending to completion.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Image src="https://picsum.photos/seed/feat2/600/400" alt="Order Management Feature" width={600} height={400} className="rounded-md" data-ai-hint="order list" />
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="pb-4">
+                        <Users className="h-8 w-8 mb-2 text-primary" />
+                        <CardTitle>Partner & Customer CRM</CardTitle>
+                        <CardDescription>Manage your relationships with partners and customers all in one place.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Image src="https://picsum.photos/seed/feat3/600/400" alt="CRM Feature" width={600} height={400} className="rounded-md" data-ai-hint="customer profiles" />
+                    </CardContent>
+                </Card>
+                 <Card>
+                    <CardHeader className="pb-4">
+                        <Palette className="h-8 w-8 mb-2 text-primary" />
+                        <CardTitle>Customizable UI</CardTitle>
+                        <CardDescription>Tailor the look and feel of the admin panel to match your brand identity perfectly.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Image src="https://picsum.photos/seed/feat4/600/400" alt="UI Feature" width={600} height={400} className="rounded-md" data-ai-hint="design system" />
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="pb-4">
+                        <Shield className="h-8 w-8 mb-2 text-primary" />
+                        <CardTitle>Robust Security</CardTitle>
+                        <CardDescription>Secure your application with role-based access control and advanced security features.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Image src="https://picsum.photos/seed/feat5/600/400" alt="Security Feature" width={600} height={400} className="rounded-md" data-ai-hint="security shield" />
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="pb-4">
+                        <Settings className="h-8 w-8 mb-2 text-primary" />
+                        <CardTitle>Powerful Settings</CardTitle>
+                        <CardDescription>Configure every aspect of your application through a simple and powerful settings interface.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Image src="https://picsum.photos/seed/feat6/600/400" alt="Settings Feature" width={600} height={400} className="rounded-md" data-ai-hint="settings page" />
+                    </CardContent>
+                </Card>
             </div>
           </div>
         </section>
@@ -211,3 +241,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+    
