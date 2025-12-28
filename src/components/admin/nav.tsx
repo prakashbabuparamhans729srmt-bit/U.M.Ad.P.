@@ -44,7 +44,7 @@ export function AdminNav() {
           <h1 className="text-xl font-bold">UCLAP</h1>
         </div>
       </SidebarHeader>
-      <SidebarContent className="p-2 no-scrollbar">
+      <SidebarContent className="p-2">
         <SidebarMenu>
           <SidebarMenuItem>
             <Link href="/dashboard">
