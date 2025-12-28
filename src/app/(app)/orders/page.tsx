@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
 
 const orders = [
   { id: 'ORD001', customer: 'Liam Johnson', date: '2023-07-15', total: '$250.00', status: 'Completed' },
@@ -34,10 +35,12 @@ export default function OrdersPage() {
                     <TabsTrigger value="cancelled">Cancelled</TabsTrigger>
                 </TabsList>
                 <div className="ml-auto flex items-center gap-2">
-                    <Button>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        Add Order
-                    </Button>
+                    <Link href="/orders">
+                        <Button>
+                            <PlusCircle className="mr-2 h-4 w-4" />
+                            Add Order
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <TabsContent value="all">
@@ -78,8 +81,12 @@ export default function OrdersPage() {
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent align="end">
                                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                    <DropdownMenuItem>View Details</DropdownMenuItem>
-                                                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                                                    <DropdownMenuItem>
+                                                        <Link href="/orders" className="w-full">View Details</Link>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem>
+                                                        <Link href="/orders" className="w-full">Edit</Link>
+                                                    </DropdownMenuItem>
                                                     <DropdownMenuItem className="text-destructive">Cancel</DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>

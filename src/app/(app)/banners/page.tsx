@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import Link from "next/link";
 
 export default function BannersPage() {
     const banners = PlaceHolderImages.filter(p => p.id.startsWith('banner-'));
@@ -12,10 +13,12 @@ export default function BannersPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Banners</h1>
-                <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Add Banner
-                </Button>
+                <Link href="/banners">
+                    <Button>
+                        <PlusCircle className="mr-2 h-4 w-4" />
+                        Add Banner
+                    </Button>
+                </Link>
             </div>
             
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -31,7 +34,9 @@ export default function BannersPage() {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Link href="/banners" className="w-full">Edit</Link>
+                                    </DropdownMenuItem>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
                                 </DropdownMenuContent>

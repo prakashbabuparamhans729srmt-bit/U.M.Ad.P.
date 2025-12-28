@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import { PlusCircle, Clock } from "lucide-react";
+import Link from "next/link";
 
 const timeSlots = [
     { time: '09:00 AM - 10:00 AM', available: true },
@@ -17,10 +18,12 @@ export default function TimeslotsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Timeslots & Dates</h1>
-                <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Add New Slot
-                </Button>
+                <Link href="/timeslots">
+                    <Button>
+                        <PlusCircle className="mr-2 h-4 w-4" />
+                        Add New Slot
+                    </Button>
+                </Link>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

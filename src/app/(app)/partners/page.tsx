@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 
 const partners = [
   { id: 'PRT001', name: 'Global Tech Inc.', joinDate: '2022-01-20', status: 'Active', avatar: 'https://picsum.photos/seed/p1/40/40' },
@@ -25,10 +26,12 @@ export default function PartnersPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Partners</h1>
-                <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Add Partner
-                </Button>
+                <Link href="/partners">
+                    <Button>
+                        <PlusCircle className="mr-2 h-4 w-4" />
+                        Add Partner
+                    </Button>
+                </Link>
             </div>
             <Card>
                 <CardHeader>
@@ -71,8 +74,12 @@ export default function PartnersPage() {
                                             </DropdownMenuTrigger>
                                             <DropdownMenuContent align="end">
                                                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                <DropdownMenuItem>View Profile</DropdownMenuItem>
-                                                <DropdownMenuItem>Edit</DropdownMenuItem>
+                                                <DropdownMenuItem>
+                                                    <Link href="/partners" className="w-full">View Profile</Link>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem>
+                                                    <Link href="/partners" className="w-full">Edit</Link>
+                                                </DropdownMenuItem>
                                                 <DropdownMenuItem className="text-destructive">Deactivate</DropdownMenuItem>
                                             </DropdownMenuContent>
                                         </DropdownMenu>
