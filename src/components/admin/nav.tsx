@@ -57,9 +57,11 @@ export function AdminNav() {
           <SidebarGroup>
             <SidebarGroupLabel>CITY SECTION</SidebarGroupLabel>
             <AccordionItem value="city-section" className="border-none">
-              <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
-                <Building className="mr-2" /> City
-              </AccordionTrigger>
+              <Link href="/orders">
+                  <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
+                    <Building className="mr-2" /> City
+                  </AccordionTrigger>
+              </Link>
               <AccordionContent className="p-0"></AccordionContent>
             </AccordionItem>
           </SidebarGroup>
@@ -83,7 +85,7 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="#" passHref>
+                    <Link href="/orders" passHref>
                         <SidebarMenuButton asChild className="h-8">
                             <span>
                                 <List className="mr-2" />
@@ -93,7 +95,7 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="#" passHref>
+                    <Link href="/orders" passHref>
                         <SidebarMenuButton asChild className="h-8">
                             <span>
                                 <Plus className="mr-2" />
