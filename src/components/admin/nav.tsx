@@ -48,41 +48,43 @@ export function AdminNav() {
         <SidebarMenu>
           <SidebarMenuItem>
             <Link href="/dashboard">
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard')} tooltip="Dashboard">
-                    <span>
-                        <LayoutDashboard />
-                        <span>Dashboard</span>
-                    </span>
-                </SidebarMenuButton>
+              <SidebarMenuButton asChild isActive={pathname.startsWith('/dashboard')} tooltip="Dashboard">
+                <span>
+                  <LayoutDashboard />
+                  <span>Dashboard</span>
+                </span>
+              </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
           <SidebarMenuItem>
             <Link href="/orders">
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/orders')} tooltip="Orders">
-                    <span>
-                        <ShoppingCart />
-                        <span>Orders</span>
-                    </span>
-                </SidebarMenuButton>
+              <SidebarMenuButton asChild isActive={pathname.startsWith('/orders')} tooltip="Orders">
+                <span>
+                  <ShoppingCart />
+                  <span>Orders</span>
+                </span>
+              </SidebarMenuButton>
             </Link>
           </SidebarMenuItem>
         </SidebarMenu>
 
         <Accordion type="multiple" className="w-full">
           <SidebarGroup>
-            <SidebarGroupLabel>CITY SECTION</SidebarGroupLabel>
-            <AccordionItem value="city-section" className="border-none">
-              <Link href="/orders">
-                  <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
-                    <Map className="mr-2" /> City
-                  </AccordionTrigger>
-              </Link>
-              <AccordionContent className="p-0"></AccordionContent>
-            </AccordionItem>
+            <SidebarGroupLabel>Management</SidebarGroupLabel>
+            <Link href="/city">
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/city')} tooltip="City">
+                  <span>
+                    <Map />
+                    <span>City</span>
+                  </span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </Link>
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel>GENERAL CATEGORY SECTION</SidebarGroupLabel>
+            <SidebarGroupLabel>Categories</SidebarGroupLabel>
             <AccordionItem value="general-category" className="border-none">
               <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
                 <List className="mr-2" /> Main Category
@@ -100,8 +102,8 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="/orders">
-                        <SidebarMenuButton asChild className="h-8">
+                    <Link href="/child-categories">
+                        <SidebarMenuButton asChild isActive={pathname.startsWith('/child-categories')} className="h-8">
                             <span>
                                 <List className="mr-2" />
                                 <span>Child Category</span>
@@ -110,8 +112,8 @@ export function AdminNav() {
                     </Link>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <Link href="/orders">
-                        <SidebarMenuButton asChild className="h-8">
+                    <Link href="/addons">
+                        <SidebarMenuButton asChild isActive={pathname.startsWith('/addons')} className="h-8">
                             <span>
                                 <Plus className="mr-2" />
                                 <span>Add On</span>
@@ -125,73 +127,76 @@ export function AdminNav() {
           </SidebarGroup>
           
           <SidebarGroup>
-            <SidebarGroupLabel>TIMESLOT & DATE SECTION</SidebarGroupLabel>
+            <SidebarGroupLabel>Business</SidebarGroupLabel>
              <Link href="/timeslots">
-                <AccordionItem value="timeslot-date" className="border-none">
-                <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
-                    <CalendarClock className="mr-2" /> TimeSlot & Date
-                </AccordionTrigger>
-                <AccordionContent className="p-0"></AccordionContent>
-                </AccordionItem>
+                <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={pathname.startsWith('/timeslots')} tooltip="Timeslots & Dates">
+                        <span>
+                            <CalendarClock />
+                            <span>TimeSlot & Date</span>
+                        </span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
             </Link>
-          </SidebarGroup>
-
-          <SidebarGroup>
-            <SidebarGroupLabel>BANNER SECTION</SidebarGroupLabel>
             <Link href="/banners">
-                <AccordionItem value="banner-section" className="border-none">
-                    <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
-                        <ImageIcon className="mr-2" /> Banner
-                    </AccordionTrigger>
-                    <AccordionContent className="p-0"></AccordionContent>
-                </AccordionItem>
+                <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={pathname.startsWith('/banners')} tooltip="Banners">
+                        <span>
+                            <ImageIcon />
+                            <span>Banner</span>
+                        </span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </Link>
+            <Link href="/partners">
+                <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={pathname.startsWith('/partners')} tooltip="Partners">
+                        <span>
+                            <Users />
+                            <span>Partner</span>
+                        </span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
             </Link>
           </SidebarGroup>
 
           <SidebarGroup>
-            <SidebarGroupLabel>PARTNER SECTION</SidebarGroupLabel>
-            <Link href="/partners">
-                <AccordionItem value="partner-section" className="border-none">
-                    <AccordionTrigger className="p-2 hover:no-underline hover:bg-sidebar-accent rounded-md [&[data-state=open]>svg]:-rotate-90">
-                        <Users className="mr-2" /> Partner
-                    </AccordionTrigger>
-                    <AccordionContent className="p-0"></AccordionContent>
-                </AccordionItem>
-            </Link>
+            <SidebarGroupLabel>Finance</SidebarGroupLabel>
+            <SidebarMenuItem>
+              <Link href="/credit-packages">
+                  <SidebarMenuButton asChild isActive={pathname.startsWith('/credit-packages')} tooltip="Credit Packages">
+                      <span>
+                          <CreditCard />
+                          <span>Credit Packages</span>
+                      </span>
+                  </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <Link href="/payment-gateway">
+                  <SidebarMenuButton asChild isActive={pathname.startsWith('/payment-gateway')} tooltip="Payment Gateway">
+                      <span>
+                          <Landmark />
+                          <span>Payment Gateway</span>
+                      </span>
+                  </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
           </SidebarGroup>
 
-          <SidebarMenuItem>
-            <Link href="/#">
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/#')} tooltip="Credit Packages">
-                    <span>
-                        <CreditCard />
-                        <span>Credit Packages</span>
-                    </span>
-                </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
-
-          <SidebarMenuItem>
-            <Link href="/#">
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/#')} tooltip="Testimonials">
-                    <span>
-                        <MessageSquare />
-                        <span>Testimonials</span>
-                    </span>
-                </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
-
-          <SidebarMenuItem>
-            <Link href="/#">
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/#')} tooltip="Payment Gateway">
-                    <span>
-                        <Landmark />
-                        <span>Payment Gateway</span>
-                    </span>
-                </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
+          <SidebarGroup>
+            <SidebarGroupLabel>Content</SidebarGroupLabel>
+            <SidebarMenuItem>
+              <Link href="/testimonials">
+                  <SidebarMenuButton asChild isActive={pathname.startsWith('/testimonials')} tooltip="Testimonials">
+                      <span>
+                          <MessageSquare />
+                          <span>Testimonials</span>
+                      </span>
+                  </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          </SidebarGroup>
 
         </Accordion>
       </SidebarContent>
