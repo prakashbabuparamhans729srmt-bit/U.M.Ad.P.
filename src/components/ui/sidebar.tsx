@@ -288,9 +288,28 @@ SidebarTrigger.displayName = "SidebarTrigger"
 
 const SidebarRail = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<"button">
->(({ className, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+  React.ComponentProps<"button"> & {
+    onHover?: 'expand' | 'none';
+  }
+>(({ className, onHover = 'expand', ...props }, ref) => {
+  const { setOpen, state } = useSidebar();
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (onHover !== 'expand' || state === 'expanded') return;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setOpen(true);
+    }, 100);
+  };
+
+  const handleMouseLeave = () => {
+    if (onHover !== 'expand' || state !== 'expanded') return;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setOpen(false);
+    }, 200);
+  };
 
   return (
     <button
@@ -298,7 +317,8 @@ const SidebarRail = React.forwardRef<
       data-sidebar="rail"
       aria-label="Toggle Sidebar"
       tabIndex={-1}
-      onClick={toggleSidebar}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       title="Toggle Sidebar"
       className={cn(
         "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
@@ -311,8 +331,8 @@ const SidebarRail = React.forwardRef<
       )}
       {...props}
     />
-  )
-})
+  );
+});
 SidebarRail.displayName = "SidebarRail"
 
 const SidebarInset = React.forwardRef<
@@ -405,7 +425,7 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "flex min-h-0 flex-1 flex-col gap-2 group-data-[collapsible=icon]:overflow-hidden",
+        "flex min-h-0 flex-1 flex-col gap-2 group-data-[collapsible=icon]:overflow-hidden no-scrollbar",
         className
       )}
       {...props}

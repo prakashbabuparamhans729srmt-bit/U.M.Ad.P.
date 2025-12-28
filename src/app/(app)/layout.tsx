@@ -1,5 +1,5 @@
 import React from 'react';
-import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar';
+import { SidebarProvider, Sidebar, SidebarInset, SidebarRail } from '@/components/ui/sidebar';
 import { AdminNav } from '@/components/admin/nav';
 import AdminHeader from '@/components/admin/header';
 
@@ -12,6 +12,7 @@ export default function AppLayout({
     <SidebarProvider>
       <Sidebar side="left" collapsible="icon" variant="sidebar">
         <AdminNav />
+        <SidebarRail />
       </Sidebar>
       <SidebarInset className="bg-background">
         <AdminHeader />
