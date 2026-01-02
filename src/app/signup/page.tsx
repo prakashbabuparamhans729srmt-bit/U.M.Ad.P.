@@ -45,9 +45,11 @@ export default function SignupPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" />
             </div>
-            <Button type="submit" className="w-full">
-              Create an account
-            </Button>
+            <Link href="/dashboard" className="w-full">
+                <Button className="w-full">
+                Create an account
+                </Button>
+            </Link>
           </div>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
