@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'Noto Sans Devanagari', 'sans-serif'],
-        headline: ['Inter', 'Noto Sans Devanagari', 'sans-serif'],
+        body: ['Inter', '"Noto Sans Devanagari"', 'sans-serif'],
+        headline: ['Inter', '"Noto Sans Devanagari"', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

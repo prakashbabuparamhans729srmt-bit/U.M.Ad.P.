@@ -53,7 +53,7 @@ export default function SettingsPage() {
             <CardHeader>
               <CardTitle>भाषा (Language)</CardTitle>
               <CardDescription>
-                एप्लिकेशन की भाषा चुनें।
+                एप्लिकेशन के लिए अपनी पसंदीदा भाषा चुनें।
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -77,7 +77,7 @@ export default function SettingsPage() {
                 </div>
             </CardContent>
              <CardFooter>
-              <Button>Save Language</Button>
+              <Button>भाषा सहेजें</Button>
             </CardFooter>
           </Card>
         </TabsContent>
