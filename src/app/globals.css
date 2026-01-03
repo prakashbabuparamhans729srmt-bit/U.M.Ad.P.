@@ -2,37 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
-    --background: 0 0% 2.7%; /* #070707 */
-    --foreground: 0 0% 100%; /* #FFFFFF */
-    --card: 212 19% 11%; /* #161C21 */
-    --card-foreground: 0 0% 100%; /* #FFFFFF */
-    --popover: 212 19% 11%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 175 96% 49%; /* #07F1D6 */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 17% 9%; /* #14181B */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 212 19% 11%;
-    --muted-foreground: 215 20% 65%; /* #94A3B8 */
-    --accent: 210 17% 9%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 358 95% 53%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 175 96% 49%;
+    --primary-foreground: 175 24% 9.8%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 17% 12%;
-    --input: 212 19% 11%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
     --ring: 175 96% 49%;
+    --radius: 0.5rem;
     --chart-1: 175 96% 49%;
     --chart-2: 197 37% 24%;
     --chart-3: 173 58% 39%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
 
     /* Sidebar inherits dark theme colors */
     --sidebar-background: var(--card);
@@ -44,32 +40,34 @@ body {
     --sidebar-border: var(--border);
     --sidebar-ring: var(--ring);
   }
+
   .dark {
-    --background: 0 0% 2.7%; /* #070707 */
-    --foreground: 0 0% 100%; /* #FFFFFF */
-    --card: 212 19% 11%; /* #161C21 */
-    --card-foreground: 0 0% 100%; /* #FFFFFF */
-    --popover: 212 19% 11%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 175 96% 49%; /* #07F1D6 */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 17% 9%; /* #14181B */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 212 19% 11%;
-    --muted-foreground: 215 20% 65%; /* #94A3B8 */
-    --accent: 210 17% 9%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 358 95% 53%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 175 96% 49%;
+    --primary-foreground: 175 24% 9.8%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 17% 12%;
-    --input: 212 19% 11%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
     --ring: 175 96% 49%;
+    --radius: 0.5rem;
     --chart-1: 175 96% 49%;
     --chart-2: 197 37% 24%;
     --chart-3: 173 58% 39%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-
+    
     /* Sidebar inherits dark theme colors */
     --sidebar-background: var(--card);
     --sidebar-foreground: var(--foreground);
@@ -92,11 +90,11 @@ body {
 }
 
 @layer components {
-    .btn-primary {
+    .btn-primary, .btn-default {
         @apply shadow-[0_0_15px_rgba(7,241,214,0.5)];
     }
     .card {
-         @apply backdrop-blur-sm bg-card/80;
+         @apply backdrop-blur-sm bg-card/80 border-primary/20;
     }
 }
 
@@ -107,5 +105,16 @@ body {
   .no-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+  @keyframes pulse-neon {
+    0%, 100% {
+      box-shadow: 0 0 2px hsl(var(--primary)), 0 0 5px hsl(var(--primary));
+    }
+    50% {
+      box-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary));
+    }
+  }
+  .animate-pulse-neon {
+    animation: pulse-neon 2s infinite;
   }
 }

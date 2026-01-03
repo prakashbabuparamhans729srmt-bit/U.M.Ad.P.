@@ -43,7 +43,7 @@ const resourceData = [
 
 const chartConfig = {
   attendance: { label: "छात्र उपस्थिति", color: "hsl(var(--primary))" },
-  performance: { label: "शिक्षक प्रदर्शन", color: "hsl(var(--secondary-foreground))" },
+  performance: { label: "शिक्षक प्रदर्शन", color: "hsl(var(--foreground))" },
   districtAverage: { label: "जिला औसत", color: "hsl(var(--muted-foreground))" },
 } satisfies ChartConfig;
 
@@ -61,29 +61,29 @@ export default function AnalysisReportPage() {
     const { data: chartData, key: dataKey } = dataMap[timeframe];
 
     return (
-        <div className="flex justify-center items-start min-h-screen bg-background p-4">
-            <Card className="w-full max-w-2xl">
-                <CardHeader className="text-center">
-                    <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
+        <div className="flex justify-center items-start min-h-screen bg-background p-4 font-headline">
+            <Card className="w-full max-w-3xl shadow-[0_0_25px_rgba(7,241,214,0.2)]">
+                <CardHeader className="text-center border-b border-primary/20 pb-4">
+                    <CardTitle className="text-3xl font-black flex items-center justify-center gap-2 text-primary tracking-widest">
                          <BarChart4 />
-                        AI विश्लेषण रिपोर्ट
+                        AI ANALYSIS REPORT
                     </CardTitle>
-                    <CardDescription>शासकीय उच्चतर माध्यमिक विद्यालय, बीकानेर</CardDescription>
+                    <CardDescription className="text-muted-foreground">शासकीय उच्चतर माध्यमिक विद्यालय, बीकानेर</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-8">
+                <CardContent className="space-y-8 p-6">
                     <div>
                         <div className="flex justify-between items-center mb-4">
-                             <h3 className="font-semibold flex items-center gap-2"><TrendingUp size={18}/> प्रदर्शन प्रवृत्ति</h3>
+                             <h3 className="text-xl font-bold flex items-center gap-2 text-primary"><TrendingUp size={22}/> Performance Trend</h3>
                              <div className="flex items-center gap-2">
-                                <Label htmlFor="district-avg-switch">जिला औसत दिखाएं</Label>
+                                <Label htmlFor="district-avg-switch" className="text-sm">Show District Avg.</Label>
                                 <Switch id="district-avg-switch" checked={showDistrictAverage} onCheckedChange={setShowDistrictAverage} />
                             </div>
                         </div>
 
-                         <div className="flex justify-center gap-2 mb-4">
-                            <Button variant={timeframe === 'weekly' ? 'default' : 'outline'} size="sm" onClick={() => setTimeframe('weekly')}>साप्ताहिक</Button>
-                            <Button variant={timeframe === 'monthly' ? 'default' : 'outline'} size="sm" onClick={() => setTimeframe('monthly')}>मासिक</Button>
-                            <Button variant={timeframe === 'yearly' ? 'default' : 'outline'} size="sm" onClick={() => setTimeframe('yearly')}>वार्षिक</Button>
+                         <div className="flex justify-center gap-2 mb-6">
+                            <Button variant={timeframe === 'weekly' ? 'default' : 'outline'} size="sm" onClick={() => setTimeframe('weekly')}>Weekly</Button>
+                            <Button variant={timeframe === 'monthly' ? 'default' : 'outline'} size="sm" onClick={() => setTimeframe('monthly')}>Monthly</Button>
+                            <Button variant={timeframe === 'yearly' ? 'default' : 'outline'} size="sm" onClick={() => setTimeframe('yearly')}>Yearly</Button>
                         </div>
 
                          <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
@@ -91,43 +91,57 @@ export default function AnalysisReportPage() {
                                 <BarChart data={chartData} margin={{ top: 20, right: 20, left: -10, bottom: 5 }}>
                                     <XAxis dataKey={dataKey} stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
                                     <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}%`} />
-                                    <Tooltip cursor={{ fill: 'hsl(var(--accent))' }} content={<ChartTooltipContent />} />
+                                    <Tooltip 
+                                      cursor={{ fill: 'hsla(var(--primary), 0.1)' }} 
+                                      contentStyle={{ 
+                                        backgroundColor: 'hsl(var(--background))', 
+                                        borderColor: 'hsl(var(--primary))', 
+                                        color: 'hsl(var(--foreground))'
+                                      }}
+                                      content={<ChartTooltipContent />} 
+                                    />
                                     <Legend />
-                                    <Bar dataKey="attendance" name="उपस्थिति" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
-                                    <Bar dataKey="performance" name="प्रदर्शन" fill="hsl(var(--chart-2))" radius={[4, 4, 0, 0]} />
-                                    {showDistrictAverage && <Bar dataKey="districtAverage" name="जिला औसत" fill="hsl(var(--muted-foreground))" radius={[4, 4, 0, 0]} />}
+                                    <Bar dataKey="attendance" name="Attendance" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                                    <Bar dataKey="performance" name="Performance" fill="hsl(var(--foreground))" radius={[4, 4, 0, 0]} />
+                                    {showDistrictAverage && <Bar dataKey="districtAverage" name="District Avg" fill="hsl(var(--muted-foreground))" radius={[4, 4, 0, 0]} />}
                                 </BarChart>
                             </ResponsiveContainer>
                         </ChartContainer>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <div>
-                                <h3 className="font-semibold flex items-center gap-2 mb-2"><Lightbulb size={18}/> AI सुझाव:</h3>
-                                <ul className="list-decimal list-inside text-sm space-y-2 text-muted-foreground">
-                                    <li><Badge variant="secondary">कम</Badge> शिक्षक उपस्थिति को संबोधित करने के लिए एक प्रदर्शन-आधारित बोनस कार्यक्रम शुरू करें।</li>
-                                    <li><Badge variant="secondary">मध्यम</Badge> सप्ताह के मध्य में एक इंटरैक्टिव सत्र आयोजित करके छात्र जुड़ाव बढ़ाएँ।</li>
-                                    <li><Badge variant="secondary">उच्च</Badge> भोजन की गुणवत्ता की निगरानी के लिए एक साप्ताहिक ऑडिट टीम स्थापित करें।</li>
+                                <h3 className="text-lg font-bold flex items-center gap-2 text-primary mb-2"><Lightbulb size={20}/> AI Suggestions</h3>
+                                <ul className="list-disc list-inside text-sm space-y-2 text-muted-foreground">
+                                    <li>Initiate a performance-based bonus program to address low teacher attendance.</li>
+                                    <li>Increase student engagement by organizing an interactive session mid-week.</li>
+                                    <li>Establish a weekly audit team to monitor meal quality.</li>
                                 </ul>
                             </div>
                              <div>
-                                <h3 className="font-semibold flex items-center gap-2 mb-2"><Target size={18}/> भविष्यवाणी:</h3>
-                                <div className="text-sm text-muted-foreground space-y-2 border p-3 rounded-md bg-secondary/30">
-                                    <p><strong>अगले सप्ताह छात्र उपस्थिति:</strong> <span className="font-bold text-primary">78-82%</span></p>
-                                    <p><strong>अगले महीने बजट आवश्यकता:</strong> ₹2,50,000 (+2%)</p>
+                                <h3 className="text-lg font-bold flex items-center gap-2 text-primary mb-2"><Target size={20}/> Predictions</h3>
+                                <div className="text-sm space-y-2 border border-primary/20 p-4 rounded-md bg-secondary/30">
+                                    <p><strong>Next Week Student Attendance:</strong> <span className="font-bold text-primary animate-pulse-neon">78-82%</span></p>
+                                    <p><strong>Next Month Budget Requirement:</strong> ₹2,50,000 (+2%)</p>
                                 </div>
                             </div>
                         </div>
                         <div>
-                             <h3 className="font-semibold flex items-center gap-2 mb-2"><PieChartIcon size={18}/> संसाधन उपयोग स्वास्थ्य</h3>
+                             <h3 className="text-lg font-bold flex items-center gap-2 text-primary mb-2"><PieChartIcon size={20}/> Resource Utilization</h3>
                              <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
                                 <ResponsiveContainer width="100%" height={200}>
                                     <PieChart>
-                                        <Tooltip content={<ChartTooltipContent hideLabel />} />
+                                        <Tooltip 
+                                            contentStyle={{ 
+                                                backgroundColor: 'hsl(var(--background))', 
+                                                borderColor: 'hsl(var(--primary))'
+                                            }}
+                                            content={<ChartTooltipContent hideLabel />} 
+                                        />
                                         <Pie data={resourceData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label>
                                              {resourceData.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={entry.fill} />
+                                                <Cell key={`cell-${index}`} fill={entry.fill} className="focus:outline-none focus:ring-2 focus:ring-primary" />
                                             ))}
                                         </Pie>
                                         <Legend />
@@ -137,8 +151,8 @@ export default function AnalysisReportPage() {
                         </div>
                     </div>
                      <Link href="/school-dashboard" className="w-full">
-                        <Button variant="outline" className="w-full mt-4">
-                           वापस डैशबोर्ड पर जाएं
+                        <Button variant="outline" className="w-full mt-6">
+                           Back to Main Dashboard
                         </Button>
                     </Link>
                 </CardContent>
