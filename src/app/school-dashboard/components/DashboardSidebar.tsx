@@ -2,7 +2,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Home, BarChart2, Video, MessageSquare, User, MapPin } from "lucide-react";
+import { Search, Home, BarChart2, Video, MessageSquare, User, MapPin, Bell } from "lucide-react";
+import Link from "next/link";
 
 export function DashboardSidebar() {
   return (
@@ -53,7 +54,11 @@ export function DashboardSidebar() {
             </div>
 
             <div>
-                <h3 className="text-xs font-semibold uppercase text-muted-foreground mb-2">🚨 ALERTS (3)</h3>
+                 <Link href="/school-dashboard/alerts">
+                    <h3 className="text-xs font-semibold uppercase text-muted-foreground mb-2 flex items-center gap-1 hover:text-primary">
+                        <Bell size={14} /> 🚨 ALERTS (3)
+                    </h3>
+                </Link>
                 <div className="space-y-2">
                     <Card className="bg-red-50 border-red-200">
                         <CardContent className="p-3">
