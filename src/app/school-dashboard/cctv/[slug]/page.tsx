@@ -5,7 +5,7 @@ export default function CctvDetailPage({ params }: { params: { slug: string } })
     const className = decodeURIComponent(params.slug).replace(/-/g, ' ');
 
     return (
-        <div className="flex justify-center items-center h-screen bg-background p-4">
+        <div className="flex justify-center items-center min-h-screen bg-background p-4">
             <Card className="w-full max-w-md">
                 <CardHeader>
                     <div className="flex justify-between items-center">

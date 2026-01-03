@@ -4,16 +4,26 @@ import { Video } from "lucide-react";
 import Link from "next/link";
 
 const cctvFeeds = [
-  { name: "कक्षा 10", status: "ok" },
-  { name: "कक्षा 9", status: "ok" },
-  { name: "कक्षा 8", status: "error", message: "नो CCTV" },
-  { name: "कक्षा 7", status: "ok" },
-  { name: "कक्षा 6", status: "ok" },
-  { name: "कक्षा 5", status: "ok" },
-  { name: "कक्षा 4", status: "ok" },
-  { name: "कक्षा 3", status: "warning", message: "कम روشنی" },
-  { name: "कक्षा 2", status: "ok" },
-  { name: "कक्षा 1", status: "ok" },
+  { name: "कक्षा 10 A", status: "ok" },
+  { name: "कक्षा 10 B", status: "ok" },
+  { name: "कक्षा 9 A", status: "ok" },
+  { name: "कक्षा 9 B", status: "warning", message: "कम روشنی" },
+  { name: "कक्षा 8 A", status: "error", message: "नो CCTV" },
+  { name: "कक्षा 8 B", status: "ok" },
+  { name: "कक्षा 7 A", status: "ok" },
+  { name: "कक्षा 7 B", status: "ok" },
+  { name: "कक्षा 6 A", status: "ok" },
+  { name: "कक्षा 6 B", status: "ok" },
+  { name: "कक्षा 5 A", status: "ok" },
+  { name: "कक्षा 5 B", status: "ok" },
+  { name: "कक्षा 4 A", status: "ok" },
+  { name: "कक्षा 4 B", status: "ok" },
+  { name: "कक्षा 3 A", status: "warning", message: "कम روشنی" },
+  { name: "कक्षा 3 B", status: "ok" },
+  { name: "कक्षा 2 A", status: "ok" },
+  { name: "कक्षा 2 B", status: "ok" },
+  { name: "कक्षा 1 A", status: "ok" },
+  { name: "कक्षा 1 B", status: "ok" },
   { name: "प्रयोगशाला", status: "warning", message: "लैब सहायक अनुपस्थित" },
   { name: "भोजनशाला", status: "ok" },
 ];
@@ -26,7 +36,7 @@ export function CCTVGrid() {
       </CardHeader>
       <CardContent className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
         {cctvFeeds.map((feed, index) => {
-            const slug = feed.name.replace(/\s+/g, '-');
+            const slug = encodeURIComponent(feed.name.replace(/\s+/g, '-'));
             return (
                 <Link href={`/school-dashboard/cctv/${slug}`} key={index}>
                     <div className={`relative aspect-square rounded-lg p-2 flex flex-col items-center justify-center text-center
