@@ -1,24 +1,25 @@
+'use client';
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
 export default function BannersPage() {
+    const { toast } = useToast();
     const banners = PlaceHolderImages.filter(p => p.id.startsWith('banner-'));
 
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Banners</h1>
-                <Link href="/banners">
-                    <Button>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        Add Banner
-                    </Button>
-                </Link>
+                <Button onClick={() => toast({ title: "Action", description: "Add Banner button clicked!" })}>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Add Banner
+                </Button>
             </div>
             
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -34,11 +35,11 @@ export default function BannersPage() {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>
-                                        <Link href="/banners" className="w-full">Edit</Link>
+                                    <DropdownMenuItem onClick={() => toast({ title: "Action", description: `Edit action for ${banner.description}`})}>
+                                        Edit
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                                    <DropdownMenuItem className="text-destructive" onClick={() => toast({ title: "Action", description: `Delete action for ${banner.description}`, variant: 'destructive'})}>Delete</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </CardHeader>

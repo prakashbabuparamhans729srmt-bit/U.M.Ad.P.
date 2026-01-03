@@ -1,10 +1,13 @@
+'use client';
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import { PlusCircle, Clock } from "lucide-react";
-import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
-const timeSlots = [
+const initialTimeSlots = [
     { time: '09:00 AM - 10:00 AM', available: true },
     { time: '10:00 AM - 11:00 AM', available: false },
     { time: '11:00 AM - 12:00 PM', available: true },
@@ -14,16 +17,26 @@ const timeSlots = [
 ]
 
 export default function TimeslotsPage() {
+    const { toast } = useToast();
+    const [timeSlots, setTimeSlots] = useState(initialTimeSlots);
+
+    const toggleAvailability = (time: string) => {
+        setTimeSlots(prevSlots => 
+            prevSlots.map(slot => 
+                slot.time === time ? { ...slot, available: !slot.available } : slot
+            )
+        );
+        toast({ title: 'Status Updated', description: `Slot ${time} availability changed.` });
+    };
+
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Timeslots & Dates</h1>
-                <Link href="/timeslots">
-                    <Button>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        Add New Slot
-                    </Button>
-                </Link>
+                <Button onClick={() => toast({ title: "Action", description: "Add New Slot button clicked!" })}>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Add New Slot
+                </Button>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -52,7 +65,11 @@ export default function TimeslotsPage() {
                                     <Clock className="h-4 w-4" />
                                     <span>{slot.time}</span>
                                 </div>
-                                <Button variant={slot.available ? 'outline' : 'secondary'} size="sm">
+                                <Button 
+                                    variant={slot.available ? 'outline' : 'secondary'} 
+                                    size="sm"
+                                    onClick={() => toggleAvailability(slot.time)}
+                                >
                                     {slot.available ? 'Make Unavailable' : 'Make Available'}
                                 </Button>
                             </div>

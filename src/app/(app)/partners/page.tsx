@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -5,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
 const partners = [
   { id: 'PRT001', name: 'Global Tech Inc.', joinDate: '2022-01-20', status: 'Active', avatar: 'https://picsum.photos/seed/p1/40/40' },
@@ -22,16 +24,15 @@ const statusVariant: { [key: string]: "default" | "secondary" | "outline" | "des
 
 
 export default function PartnersPage() {
+    const { toast } = useToast();
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Partners</h1>
-                <Link href="/partners">
-                    <Button>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        Add Partner
-                    </Button>
-                </Link>
+                <Button onClick={() => toast({ title: "Action", description: "Add Partner button clicked!" })}>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Add Partner
+                </Button>
             </div>
             <Card>
                 <CardHeader>
@@ -74,13 +75,13 @@ export default function PartnersPage() {
                                             </DropdownMenuTrigger>
                                             <DropdownMenuContent align="end">
                                                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                <DropdownMenuItem>
-                                                    <Link href="/partners" className="w-full">View Profile</Link>
+                                                <DropdownMenuItem onClick={() => toast({ title: "Action", description: `View profile for ${partner.name}`})}>
+                                                    View Profile
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <Link href="/partners" className="w-full">Edit</Link>
+                                                <DropdownMenuItem onClick={() => toast({ title: "Action", description: `Edit action for ${partner.name}`})}>
+                                                    Edit
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem className="text-destructive">Deactivate</DropdownMenuItem>
+                                                <DropdownMenuItem className="text-destructive" onClick={() => toast({ title: "Action", description: `Deactivate action for ${partner.name}`, variant: 'destructive'})}>Deactivate</DropdownMenuItem>
                                             </DropdownMenuContent>
                                         </DropdownMenu>
                                     </TableCell>

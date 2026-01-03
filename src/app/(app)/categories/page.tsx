@@ -1,10 +1,12 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
-import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
 const categories = [
     { id: 'CAT001', name: 'Electronics', parent: '-', type: 'Main' },
@@ -16,16 +18,16 @@ const categories = [
 ];
 
 export default function CategoriesPage() {
+    const { toast } = useToast();
+
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">Categories</h1>
-                <Link href="/categories">
-                    <Button>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        Add Category
-                    </Button>
-                </Link>
+                <Button onClick={() => toast({ title: "Action", description: "Add Category button clicked!" })}>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Add Category
+                </Button>
             </div>
             <Card>
                 <CardHeader>
@@ -62,10 +64,10 @@ export default function CategoriesPage() {
                                             </DropdownMenuTrigger>
                                             <DropdownMenuContent align="end">
                                                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                <DropdownMenuItem>
-                                                    <Link href="/categories" className="w-full">Edit</Link>
+                                                <DropdownMenuItem onClick={() => toast({ title: "Action", description: `Edit action for ${category.name}`})}>
+                                                    Edit
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                                                <DropdownMenuItem className="text-destructive" onClick={() => toast({ title: "Action", description: `Delete action for ${category.name}`, variant: 'destructive' })}>Delete</DropdownMenuItem>
                                             </DropdownMenuContent>
                                         </DropdownMenu>
                                     </TableCell>
