@@ -18,6 +18,8 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ThemeToggle } from "@/components/theme-toggle"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 
 export default function SettingsPage() {
   return (
@@ -136,6 +138,12 @@ export default function SettingsPage() {
           </Card>
         </TabsContent>
       </Tabs>
+      <Link href="/dashboard" className="w-full">
+          <Button variant="outline" className="w-full">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Dashboard
+          </Button>
+      </Link>
     </div>
   )
 }
