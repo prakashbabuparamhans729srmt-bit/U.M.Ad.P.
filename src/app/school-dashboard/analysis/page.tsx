@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, PieChart, Pie, Cell } from "recharts";
 import { ChartTooltipContent, ChartContainer, type ChartConfig } from "@/components/ui/chart";
-import { Lightbulb, Target, TrendingUp, BarChart4, PieChartIcon } from "lucide-react";
+import { Lightbulb, Target, TrendingUp, BarChart4, PieChartIcon, Share2, Download } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from '@/components/ui/badge';
@@ -63,12 +63,27 @@ export default function AnalysisReportPage() {
     return (
         <div className="flex justify-center items-start min-h-screen p-4 font-headline">
             <Card className="w-full max-w-3xl shadow-[0_0_25px_rgba(7,241,214,0.2)]">
-                <CardHeader className="text-center border-b border-primary/20 pb-4">
-                    <CardTitle className="text-3xl font-black flex items-center justify-center gap-2 text-primary tracking-widest">
-                         <BarChart4 />
-                        AI ANALYSIS REPORT
-                    </CardTitle>
-                    <CardDescription className="text-muted-foreground">शासकीय उच्चतर माध्यमिक विद्यालय, बीकानेर</CardDescription>
+                <CardHeader className="border-b border-primary/20 pb-4">
+                     <div className="flex justify-between items-center">
+                        <div className="flex gap-2">
+                           <Button variant="outline" size="icon">
+                                <Download className="h-4 w-4" />
+                                <span className="sr-only">Download Report</span>
+                            </Button>
+                             <Button variant="outline" size="icon">
+                                <Share2 className="h-4 w-4" />
+                                <span className_name="sr-only">Share Report</span>
+                            </Button>
+                        </div>
+                        <div className="text-center">
+                            <CardTitle className="text-3xl font-black flex items-center justify-center gap-2 text-primary tracking-widest">
+                                <BarChart4 />
+                                AI ANALYSIS REPORT
+                            </CardTitle>
+                            <CardDescription className="text-muted-foreground">शासकीय उच्चतर माध्यमिक विद्यालय, बीकानेर</CardDescription>
+                        </div>
+                        <div className="w-16"></div>
+                    </div>
                 </CardHeader>
                 <CardContent className="space-y-8 p-6">
                     <div>
