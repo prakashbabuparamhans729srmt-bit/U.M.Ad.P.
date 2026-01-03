@@ -81,7 +81,7 @@ export function DashboardSidebar() {
                 <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Home size={20}/><span className="text-xs">होम</span></Link>
                 <Link href="/school-dashboard" className="flex flex-col items-center text-primary font-bold"><BarChart2 size={20}/><span className="text-xs">डैशबोर्ड</span></Link>
                 <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Video size={20}/><span className="text-xs">CCTV</span></Link>
-                <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Settings size={20}/><span className="text-xs">सेटिंग</span></Link>
+                <Link href="/school-dashboard/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Settings size={20}/><span className="text-xs">सेटिंग</span></Link>
             </div>
         </div>
     </div>

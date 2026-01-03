@@ -23,7 +23,7 @@ export function FooterNav() {
                 <ClipboardPlus size={20} />
                 <span className="text-xs">डेटा एंट्री</span>
             </Link>
-             <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+             <Link href="/school-dashboard/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary">
                 <Settings size={20} />
                 <span className="text-xs">सेटिंग</span>
             </Link>

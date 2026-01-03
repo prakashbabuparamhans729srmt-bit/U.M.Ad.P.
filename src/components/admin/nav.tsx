@@ -203,16 +203,6 @@ export function AdminNav() {
       </SidebarContent>
       <SidebarFooter className="p-2">
         <SidebarMenu>
-          <SidebarMenuItem>
-            <Link href="/settings">
-                <SidebarMenuButton asChild isActive={pathname.startsWith('/settings')} tooltip="Settings">
-                    <span>
-                        <Settings />
-                        <span>Settings</span>
-                    </span>
-                </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
     </>
