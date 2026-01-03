@@ -1,0 +1,37 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Home, BarChart2, PieChart, FileText, Settings, User } from "lucide-react";
+
+export function FooterNav() {
+  return (
+    <Card className="fixed bottom-0 left-0 right-0 rounded-none border-t lg:hidden">
+      <CardContent className="p-2">
+        <div className="flex justify-around items-center">
+            <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <Home size={20} />
+                <span className="text-xs">होम</span>
+            </button>
+            <button className="flex flex-col items-center text-primary font-bold">
+                <BarChart2 size={20} />
+                <span className="text-xs">डैशबोर्ड</span>
+            </button>
+            <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <PieChart size={20} />
+                <span className="text-xs">विश्लेषण</span>
+            </button>
+            <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <FileText size={20} />
+                <span className="text-xs">रिपोर्ट</span>
+            </button>
+             <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <Settings size={20} />
+                <span className="text-xs">सेटिंग</span>
+            </button>
+             <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <User size={20} />
+                <span className="text-xs">प्रोफाइल</span>
+            </button>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
