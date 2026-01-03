@@ -7,6 +7,7 @@ import { InfoGrid } from './components/InfoGrid';
 import { Suggestions } from './components/Suggestions';
 import { FooterNav } from './components/FooterNav';
 import SchoolDashboardLayout from './layout';
+import { KeyFeatures } from './components/KeyFeatures';
 
 export default function SchoolDashboard() {
   return (
@@ -16,6 +17,7 @@ export default function SchoolDashboard() {
         <StatCards />
         <CCTVGrid />
         <AnalysisSection />
+        <KeyFeatures />
         <ReportTable />
         <InfoGrid />
         <Suggestions />
