@@ -78,9 +78,9 @@ export function DashboardSidebar() {
 
         <div className="mt-auto p-2 border-t">
              <div className="flex justify-around">
-                <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary" replace={true}><Home size={20}/><span className="text-xs">होम</span></Link>
+                <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Home size={20}/><span className="text-xs">होम</span></Link>
                 <Link href="/school-dashboard" className="flex flex-col items-center text-primary font-bold"><BarChart2 size={20}/><span className="text-xs">डैशबोर्ड</span></Link>
-                <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Video size={20}/><span className="text-xs">CCTV</span></Link>
+                <Link href="/school-dashboard" className="flex flexcol items-center text-muted-foreground hover:text-primary"><Video size={20}/><span className="text-xs">CCTV</span></Link>
                 <Link href="/school-dashboard/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Settings size={20}/><span className="text-xs">सेटिंग</span></Link>
             </div>
         </div>

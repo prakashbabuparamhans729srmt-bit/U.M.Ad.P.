@@ -7,7 +7,7 @@ export function FooterNav() {
     <Card className="fixed bottom-0 left-0 right-0 rounded-none border-t lg:hidden">
       <CardContent className="p-2">
         <div className="flex justify-around items-center">
-            <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary" replace={true}>
+            <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary">
                 <Home size={20} />
                 <span className="text-xs">होम</span>
             </Link>
