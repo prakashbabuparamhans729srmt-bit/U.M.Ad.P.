@@ -11,14 +11,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Camera, Star } from "lucide-react";
 import Link from 'next/link';
-import { FooterNav } from '../components/FooterNav';
 
 export default function DataEntryPage() {
     const [attendance, setAttendance] = useState(32);
     const totalStudents = 35;
 
     return (
-        <div className="flex justify-center items-start min-h-screen bg-background p-4">
+        <div className="flex justify-center items-start min-h-screen p-4">
             <Card className="w-full max-w-lg">
                 <CardHeader>
                     <CardTitle className="text-xl">दैनिक डेटा प्रविष्टि - 15/04/24</CardTitle>
@@ -113,7 +112,6 @@ export default function DataEntryPage() {
                     </Link>
                 </CardContent>
             </Card>
-            <FooterNav />
         </div>
     );
 }

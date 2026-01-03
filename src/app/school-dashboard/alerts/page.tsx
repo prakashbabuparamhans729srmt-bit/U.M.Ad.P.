@@ -2,11 +2,12 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, Info, Bell, CheckCircle, Clock, MapPin, Users, BarChartHorizontal } from "lucide-react";
-import { FooterNav } from "../components/FooterNav";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function AlertsPage() {
     return (
-        <div className="flex justify-center items-start min-h-screen bg-background p-4">
+        <div className="flex justify-center items-start min-h-screen p-4">
             <Card className="w-full max-w-lg">
                 <CardHeader className="text-center">
                     <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
@@ -63,10 +64,13 @@ export default function AlertsPage() {
                             <p><strong>लंबित:</strong> 3</p>
                         </div>
                     </div>
-
+                    <Link href="/school-dashboard" className="w-full">
+                        <Button variant="outline" className="w-full mt-6">
+                           Back to Main Dashboard
+                        </Button>
+                    </Link>
                 </CardContent>
             </Card>
-            <FooterNav />
         </div>
     )
 }

@@ -1,12 +1,13 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FooterNav } from "../../components/FooterNav";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function CctvDetailPage({ params }: { params: { slug: string } }) {
     const className = decodeURIComponent(params.slug).replace(/-/g, ' ');
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-background p-4">
+        <div className="flex justify-center items-center min-h-screen p-4">
             <Card className="w-full max-w-md">
                 <CardHeader>
                     <div className="flex justify-between items-center">
@@ -31,8 +32,14 @@ export default function CctvDetailPage({ params }: { params: { slug: string } })
                         </ul>
                     </div>
                 </CardContent>
+                <CardFooter>
+                    <Link href="/school-dashboard" className="w-full">
+                        <Button variant="outline" className="w-full">
+                           Back to Main Dashboard
+                        </Button>
+                    </Link>
+                </CardFooter>
             </Card>
-            <FooterNav />
         </div>
     );
 }

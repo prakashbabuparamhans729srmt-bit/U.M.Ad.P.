@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { FooterNav } from '../components/FooterNav';
 
 const monthlyData = [
   { month: "Jan", attendance: 85, performance: 90, districtAverage: 88 },
@@ -62,7 +61,7 @@ export default function AnalysisReportPage() {
     const { data: chartData, key: dataKey } = dataMap[timeframe];
 
     return (
-        <div className="flex justify-center items-start min-h-screen bg-background p-4 font-headline">
+        <div className="flex justify-center items-start min-h-screen p-4 font-headline">
             <Card className="w-full max-w-3xl shadow-[0_0_25px_rgba(7,241,214,0.2)]">
                 <CardHeader className="text-center border-b border-primary/20 pb-4">
                     <CardTitle className="text-3xl font-black flex items-center justify-center gap-2 text-primary tracking-widest">
@@ -158,7 +157,6 @@ export default function AnalysisReportPage() {
                     </Link>
                 </CardContent>
             </Card>
-            <FooterNav />
         </div>
     )
 }
