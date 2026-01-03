@@ -15,43 +15,21 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Settings</h1>
-        <p className="text-muted-foreground">Manage your account and application settings.</p>
+        <p className="text-muted-foreground">Manage your application settings.</p>
       </div>
-      <Tabs defaultValue="profile" className="w-full">
+      <Tabs defaultValue="appearance" className="w-full">
         <TabsList>
-          <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="appearance">Appearance</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
+           <TabsTrigger value="account">Account</TabsTrigger>
         </TabsList>
-        <TabsContent value="profile">
-          <Card>
-            <CardHeader>
-              <CardTitle>Profile</CardTitle>
-              <CardDescription>
-                Make changes to your public information here. Click save when you're done.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" defaultValue="Admin User" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" defaultValue="admin@example.com" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save changes</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
         <TabsContent value="appearance">
           <Card>
             <CardHeader>
@@ -60,8 +38,11 @@ export default function SettingsPage() {
                 Customize the look and feel of the application.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
-              <p>Theme settings will be available here.</p>
+            <CardContent className="space-y-4">
+              <div>
+                <h3 className="text-lg font-medium mb-2">Theme</h3>
+                <p className="text-sm text-muted-foreground">Theme settings are controlled via `src/app/globals.css`.</p>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
@@ -73,9 +54,46 @@ export default function SettingsPage() {
                 Configure how you receive notifications.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
-              <p>Notification settings will be available here.</p>
+            <CardContent className="space-y-4">
+                <div className="flex items-center space-x-2">
+                    <Checkbox id="email-notifications" defaultChecked />
+                    <label htmlFor="email-notifications" className="text-sm font-medium leading-none">
+                        Email Notifications
+                    </label>
+                </div>
+                 <div className="flex items-center space-x-2">
+                    <Checkbox id="push-notifications" />
+                    <label htmlFor="push-notifications" className="text-sm font-medium leading-none">
+                        Push Notifications
+                    </label>
+                </div>
             </CardContent>
+             <CardFooter>
+              <Button>Save Preferences</Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
+         <TabsContent value="account">
+          <Card>
+            <CardHeader>
+              <CardTitle>Account</CardTitle>
+              <CardDescription>
+                Manage your account settings.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="password">Current Password</Label>
+                <Input id="password" type="password" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="new-password">New Password</Label>
+                <Input id="new-password" type="password" />
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button>Update Password</Button>
+            </CardFooter>
           </Card>
         </TabsContent>
       </Tabs>

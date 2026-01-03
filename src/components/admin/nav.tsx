@@ -24,6 +24,7 @@ import {
   CreditCard,
   MessageSquare,
   Landmark,
+  User,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -202,6 +203,16 @@ export function AdminNav() {
       </SidebarContent>
       <SidebarFooter className="p-2">
         <SidebarMenu>
+          <SidebarMenuItem>
+            <Link href="/profile">
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/profile')} tooltip="Profile">
+                    <span>
+                        <User />
+                        <span>Profile</span>
+                    </span>
+                </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <Link href="/settings">
                 <SidebarMenuButton asChild isActive={pathname.startsWith('/settings')} tooltip="Settings">

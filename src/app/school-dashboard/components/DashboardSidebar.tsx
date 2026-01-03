@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Home, BarChart2, Video, MessageSquare, User, MapPin, Bell } from "lucide-react";
+import { Search, Home, BarChart2, Video, MessageSquare, User, MapPin, Bell, Settings } from "lucide-react";
 import Link from "next/link";
 
 export function DashboardSidebar() {
@@ -81,8 +81,8 @@ export function DashboardSidebar() {
                 <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Home size={20}/><span className="text-xs">होम</span></Link>
                 <Link href="/school-dashboard" className="flex flex-col items-center text-primary font-bold"><BarChart2 size={20}/><span className="text-xs">डैशबोर्ड</span></Link>
                 <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Video size={20}/><span className="text-xs">CCTV</span></Link>
-                <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><MessageSquare size={20}/><span className="text-xs">फीडबैक</span></Link>
-                <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><User size={20}/><span className="text-xs">प्रोफाइल</span></Link>
+                <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Settings size={20}/><span className="text-xs">सेटिंग</span></Link>
+                <Link href="/profile" className="flex flex-col items-center text-muted-foreground hover:text-primary"><User size={20}/><span className="text-xs">प्रोफाइल</span></Link>
             </div>
         </div>
     </div>

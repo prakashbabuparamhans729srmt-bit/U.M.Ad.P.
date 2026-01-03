@@ -27,7 +27,7 @@ export function FooterNav() {
                 <Settings size={20} />
                 <span className="text-xs">सेटिंग</span>
             </Link>
-             <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+             <Link href="/profile" className="flex flex-col items-center text-muted-foreground hover:text-primary">
                 <User size={20} />
                 <span className="text-xs">प्रोफाइल</span>
             </Link>
