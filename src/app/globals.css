@@ -8,28 +8,28 @@ body {
 
 @layer base {
   :root {
-    --background: 210 17% 9%; /* #14181B */
+    --background: 0 0% 2.7%; /* #070707 */
     --foreground: 0 0% 100%; /* #FFFFFF */
-    --card: 209 24% 11%; /* #161C21 */
+    --card: 212 19% 11%; /* #161C21 */
     --card-foreground: 0 0% 100%; /* #FFFFFF */
-    --popover: 209 24% 11%;
+    --popover: 212 19% 11%;
     --popover-foreground: 0 0% 100%;
     --primary: 175 96% 49%; /* #07F1D6 */
     --primary-foreground: 210 40% 98%;
-    --secondary: 209 24% 11%;
+    --secondary: 210 17% 9%; /* #14181B */
     --secondary-foreground: 0 0% 100%;
-    --muted: 209 24% 11%;
+    --muted: 212 19% 11%;
     --muted-foreground: 215 20% 65%; /* #94A3B8 */
-    --accent: 0 0% 2.7%; /* #070707 */
+    --accent: 210 17% 9%;
     --accent-foreground: 0 0% 100%;
     --destructive: 358 95% 53%;
     --destructive-foreground: 0 0% 98%;
-    --border: 209 24% 15%;
-    --input: 209 24% 11%;
+    --border: 210 17% 12%;
+    --input: 212 19% 11%;
     --ring: 175 96% 49%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
+    --chart-1: 175 96% 49%;
+    --chart-2: 197 37% 24%;
+    --chart-3: 173 58% 39%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
@@ -45,30 +45,30 @@ body {
     --sidebar-ring: var(--ring);
   }
   .dark {
-    --background: 210 17% 9%; /* #14181B */
+    --background: 0 0% 2.7%; /* #070707 */
     --foreground: 0 0% 100%; /* #FFFFFF */
-    --card: 209 24% 11%; /* #161C21 */
+    --card: 212 19% 11%; /* #161C21 */
     --card-foreground: 0 0% 100%; /* #FFFFFF */
-    --popover: 209 24% 11%;
+    --popover: 212 19% 11%;
     --popover-foreground: 0 0% 100%;
     --primary: 175 96% 49%; /* #07F1D6 */
     --primary-foreground: 210 40% 98%;
-    --secondary: 209 24% 11%;
+    --secondary: 210 17% 9%; /* #14181B */
     --secondary-foreground: 0 0% 100%;
-    --muted: 209 24% 11%;
+    --muted: 212 19% 11%;
     --muted-foreground: 215 20% 65%; /* #94A3B8 */
-    --accent: 0 0% 2.7%; /* #070707 */
+    --accent: 210 17% 9%;
     --accent-foreground: 0 0% 100%;
     --destructive: 358 95% 53%;
     --destructive-foreground: 0 0% 98%;
-    --border: 209 24% 15%;
-    --input: 209 24% 11%;
+    --border: 210 17% 12%;
+    --input: 212 19% 11%;
     --ring: 175 96% 49%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 175 96% 49%;
+    --chart-2: 197 37% 24%;
+    --chart-3: 173 58% 39%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
 
     /* Sidebar inherits dark theme colors */
     --sidebar-background: var(--card);
@@ -89,6 +89,15 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+    .btn-primary {
+        @apply shadow-[0_0_15px_rgba(7,241,214,0.5)];
+    }
+    .card {
+         @apply backdrop-blur-sm bg-card/80;
+    }
 }
 
 @layer utilities {
