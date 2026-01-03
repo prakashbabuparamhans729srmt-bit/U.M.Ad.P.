@@ -16,6 +16,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function SettingsPage() {
   return (
@@ -27,6 +28,7 @@ export default function SettingsPage() {
       <Tabs defaultValue="appearance" className="w-full">
         <TabsList>
           <TabsTrigger value="appearance">Appearance</TabsTrigger>
+          <TabsTrigger value="language">Language</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
            <TabsTrigger value="account">Account</TabsTrigger>
         </TabsList>
@@ -44,6 +46,39 @@ export default function SettingsPage() {
                 <p className="text-sm text-muted-foreground">Theme settings are controlled via `src/app/globals.css`.</p>
               </div>
             </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="language">
+          <Card>
+            <CardHeader>
+              <CardTitle>भाषा (Language)</CardTitle>
+              <CardDescription>
+                एप्लिकेशन की भाषा चुनें।
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+                <div className="space-y-2">
+                    <Label htmlFor="language-select">भाषा चुनें</Label>
+                    <Select>
+                        <SelectTrigger id="language-select">
+                            <SelectValue placeholder="Select language" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="en">English</SelectItem>
+                            <SelectItem value="hi">हिन्दी (Hindi)</SelectItem>
+                            <SelectItem value="bn">বাংলা (Bengali)</SelectItem>
+                            <SelectItem value="mr">मराठी (Marathi)</SelectItem>
+                            <SelectItem value="te">తెలుగు (Telugu)</SelectItem>
+                            <SelectItem value="ta">தமிழ் (Tamil)</SelectItem>
+                            <SelectItem value="gu">ગુજરાતી (Gujarati)</SelectItem>
+                            <SelectItem value="pa">ਪੰਜਾਬੀ (Punjabi)</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+            </CardContent>
+             <CardFooter>
+              <Button>Save Language</Button>
+            </CardFooter>
           </Card>
         </TabsContent>
         <TabsContent value="notifications">
