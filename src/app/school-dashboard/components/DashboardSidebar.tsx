@@ -15,7 +15,7 @@ export function DashboardSidebar() {
             </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        <div className="flex-1 overflow-y-auto p-4 space-y-6 no-scrollbar">
             <div>
                 <h3 className="text-xs font-semibold uppercase text-muted-foreground mb-2">⭐ FAVORITE SCHOOLS</h3>
                 <Card className="hover:bg-secondary transition-colors">
