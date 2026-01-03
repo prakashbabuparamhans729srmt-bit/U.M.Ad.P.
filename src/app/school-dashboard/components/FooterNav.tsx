@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Home, BarChart2, PieChart, FileText, Settings, User } from "lucide-react";
+import { Home, BarChart2, PieChart, FileText, Settings, User, ClipboardPlus } from "lucide-react";
 import Link from "next/link";
 
 export function FooterNav() {
@@ -19,10 +19,10 @@ export function FooterNav() {
                 <PieChart size={20} />
                 <span className="text-xs">विश्लेषण</span>
             </Link>
-            <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
-                <FileText size={20} />
-                <span className="text-xs">रिपोर्ट</span>
-            </button>
+            <Link href="/school-dashboard/data-entry" className="flex flex-col items-center text-muted-foreground hover:text-primary">
+                <ClipboardPlus size={20} />
+                <span className="text-xs">डेटा एंट्री</span>
+            </Link>
              <button className="flex flex-col items-center text-muted-foreground hover:text-primary">
                 <Settings size={20} />
                 <span className="text-xs">सेटिंग</span>
