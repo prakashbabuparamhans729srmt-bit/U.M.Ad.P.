@@ -19,11 +19,11 @@ export function AnalysisSection() {
           <CardTitle>📋 वास्तविक समय डेटा</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
-          <p>• शिक्षक उप.: 12/18</p>
-          <p>• छात्र उप.: 342/500</p>
-          <p>• कक्षा क्रियाशील: 14/18</p>
-          <p>• भोजन पकाया: <Badge variant="default">हाँ</Badge></p>
-          <p>• पानी उपलब्ध: <Badge variant="default">हाँ</Badge></p>
+          <div>• शिक्षक उप.: 12/18</div>
+          <div>• छात्र उप.: 342/500</div>
+          <div>• कक्षा क्रियाशील: 14/18</div>
+          <div>• भोजन पकाया: <Badge variant="default">हाँ</Badge></div>
+          <div>• पानी उपलब्ध: <Badge variant="default">हाँ</Badge></div>
         </CardContent>
       </Card>
       <Card>
@@ -31,9 +31,9 @@ export function AnalysisSection() {
           <CardTitle>⚠️ AI अलर्ट</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
-          <p><Badge variant="destructive">🔴 मध्याह्न भोजन आज नहीं बना</Badge></p>
-          <p><Badge variant="secondary" className="bg-yellow-400 text-black">🟡 कक्षा 8 का CCTV 2 दिन से बंद</Badge></p>
-          <p><Badge variant="default">🟢 सभी शौचालय कार्यशील</Badge></p>
+          <div><Badge variant="destructive">🔴 मध्याह्न भोजन आज नहीं बना</Badge></div>
+          <div><Badge variant="secondary" className="bg-yellow-400 text-black">🟡 कक्षा 8 का CCTV 2 दिन से बंद</Badge></div>
+          <div><Badge variant="default">🟢 सभी शौचालय कार्यशील</Badge></div>
         </CardContent>
       </Card>
     </div>
