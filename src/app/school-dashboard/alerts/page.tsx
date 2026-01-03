@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, Info, Bell, CheckCircle, Clock, MapPin, Users, BarChartHorizontal } from "lucide-react";
+import { AlertTriangle, Info, Bell, CheckCircle, Clock, MapPin, Users, BarChartHorizontal, Share2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -9,12 +9,20 @@ export default function AlertsPage() {
     return (
         <div className="flex justify-center items-start min-h-screen p-4">
             <Card className="w-full max-w-lg">
-                <CardHeader className="text-center">
-                    <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
-                        <Bell />
-                        चेतावनी सूचनाएं
-                    </CardTitle>
-                    <CardDescription>तत्काल ध्यान देने योग्य मामले</CardDescription>
+                <CardHeader>
+                    <div className="flex justify-between items-start">
+                        <div className="text-center flex-1">
+                            <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
+                                <Bell />
+                                चेतावनी सूचनाएं
+                            </CardTitle>
+                            <CardDescription>तत्काल ध्यान देने योग्य मामले</CardDescription>
+                        </div>
+                         <Button variant="outline" size="icon">
+                            <Share2 className="h-4 w-4" />
+                            <span className="sr-only">Share Alerts</span>
+                        </Button>
+                    </div>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">

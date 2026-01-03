@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Share2, Download } from "lucide-react";
 
 const teachers = [
     { name: "रमेश कुमार", subject: "हिंदी", status: "Present", attendance: "95%", avatar: "RK", color: "bg-green-500" },
@@ -20,8 +20,22 @@ export default function TeachersPage() {
         <div className="flex justify-center items-start min-h-screen p-4">
             <Card className="w-full max-w-2xl">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-bold">👥 शिक्षक विवरण</CardTitle>
-                    <CardDescription>स्कूल के सभी शिक्षकों की विस्तृत जानकारी</CardDescription>
+                    <div className="flex justify-between items-start">
+                        <div>
+                            <CardTitle className="text-2xl font-bold">👥 शिक्षक विवरण</CardTitle>
+                            <CardDescription>स्कूल के सभी शिक्षकों की विस्तृत जानकारी</CardDescription>
+                        </div>
+                        <div className="flex gap-2">
+                           <Button variant="outline" size="icon">
+                                <Download className="h-4 w-4" />
+                                <span className="sr-only">Download Report</span>
+                            </Button>
+                             <Button variant="outline" size="icon">
+                                <Share2 className="h-4 w-4" />
+                                <span className="sr-only">Share Report</span>
+                            </Button>
+                        </div>
+                    </div>
                 </CardHeader>
                 <CardContent>
                     <Table>

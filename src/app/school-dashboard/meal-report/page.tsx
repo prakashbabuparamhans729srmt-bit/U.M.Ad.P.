@@ -1,8 +1,9 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, AlertTriangle, Star, Soup } from "lucide-react";
+import { ArrowLeft, CheckCircle, AlertTriangle, Star, Soup, Share2, Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function MealReportPage() {
@@ -10,8 +11,22 @@ export default function MealReportPage() {
         <div className="flex justify-center items-start min-h-screen p-4">
             <Card className="w-full max-w-2xl">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-bold flex items-center gap-2"><Soup /> मध्याह्न भोजन रिपोर्ट</CardTitle>
-                    <CardDescription>आज और इस सप्ताह की भोजन स्थिति और गुणवत्ता का विवरण</CardDescription>
+                    <div className="flex justify-between items-start">
+                        <div>
+                            <CardTitle className="text-2xl font-bold flex items-center gap-2"><Soup /> मध्याह्न भोजन रिपोर्ट</CardTitle>
+                            <CardDescription>आज और इस सप्ताह की भोजन स्थिति और गुणवत्ता का विवरण</CardDescription>
+                        </div>
+                         <div className="flex gap-2">
+                           <Button variant="outline" size="icon">
+                                <Download className="h-4 w-4" />
+                                <span className="sr-only">Download Report</span>
+                            </Button>
+                             <Button variant="outline" size="icon">
+                                <Share2 className="h-4 w-4" />
+                                <span className="sr-only">Share Report</span>
+                            </Button>
+                        </div>
+                    </div>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="border rounded-lg p-4 bg-red-500/10 border-red-500/30">
