@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function SettingsPage() {
   return (
@@ -42,8 +43,11 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="text-lg font-medium mb-2">Theme</h3>
-                <p className="text-sm text-muted-foreground">Theme settings are controlled via `src/app/globals.css`.</p>
+                <h3 className="text-lg font-medium mb-4">Theme</h3>
+                <div className="space-y-2">
+                  <Label>Toggle between light and dark mode.</Label>
+                  <ThemeToggle />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -53,12 +57,12 @@ export default function SettingsPage() {
             <CardHeader>
               <CardTitle>भाषा (Language)</CardTitle>
               <CardDescription>
-                एप्लिकेशन के लिए अपनी पसंदीदा भाषा चुनें।
+                एप्लिकेशन के लिए अपनी पसंदीदा भाषा चुनें। (Choose your preferred language for the application.)
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="language-select">भाषा चुनें</Label>
+                    <Label htmlFor="language-select">भाषा चुनें (Select Language)</Label>
                     <Select>
                         <SelectTrigger id="language-select">
                             <SelectValue placeholder="Select language" />
@@ -77,7 +81,7 @@ export default function SettingsPage() {
                 </div>
             </CardContent>
              <CardFooter>
-              <Button>भाषा सहेजें</Button>
+              <Button>Save Language</Button>
             </CardFooter>
           </Card>
         </TabsContent>
