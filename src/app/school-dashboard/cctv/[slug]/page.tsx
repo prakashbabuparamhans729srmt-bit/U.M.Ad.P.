@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { FooterNav } from "../../components/FooterNav";
 
 export default function CctvDetailPage({ params }: { params: { slug: string } }) {
     const className = decodeURIComponent(params.slug).replace(/-/g, ' ');
@@ -31,6 +32,7 @@ export default function CctvDetailPage({ params }: { params: { slug: string } })
                     </div>
                 </CardContent>
             </Card>
+            <FooterNav />
         </div>
     );
 }

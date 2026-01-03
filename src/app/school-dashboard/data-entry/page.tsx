@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Camera, Star } from "lucide-react";
 import Link from 'next/link';
+import { FooterNav } from '../components/FooterNav';
 
 export default function DataEntryPage() {
     const [attendance, setAttendance] = useState(32);
@@ -112,6 +113,7 @@ export default function DataEntryPage() {
                     </Link>
                 </CardContent>
             </Card>
+            <FooterNav />
         </div>
     );
 }

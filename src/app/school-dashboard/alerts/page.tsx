@@ -2,6 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, Info, Bell, CheckCircle, Clock, MapPin, Users, BarChartHorizontal } from "lucide-react";
+import { FooterNav } from "../components/FooterNav";
 
 export default function AlertsPage() {
     return (
@@ -65,6 +66,7 @@ export default function AlertsPage() {
 
                 </CardContent>
             </Card>
+            <FooterNav />
         </div>
     )
 }

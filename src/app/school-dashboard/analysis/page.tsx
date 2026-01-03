@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import { FooterNav } from '../components/FooterNav';
 
 const monthlyData = [
   { month: "Jan", attendance: 85, performance: 90, districtAverage: 88 },
@@ -157,6 +158,7 @@ export default function AnalysisReportPage() {
                     </Link>
                 </CardContent>
             </Card>
+            <FooterNav />
         </div>
     )
 }
