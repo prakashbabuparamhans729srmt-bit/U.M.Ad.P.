@@ -60,16 +60,16 @@ export function DashboardSidebar() {
                     </h3>
                 </Link>
                 <div className="space-y-2">
-                    <Card className="bg-red-50 border-red-200">
+                    <Card className="bg-red-500/10 border-red-500/20">
                         <CardContent className="p-3">
-                            <p className="font-bold text-red-800">🔴 आपके बच्चे के स्कूल में मध्याह्न भोजन नहीं बना</p>
-                            <p className="text-sm text-red-600">आज (12:00 PM)</p>
+                            <p className="font-bold text-red-500">🔴 आपके बच्चे के स्कूल में मध्याह्न भोजन नहीं बना</p>
+                            <p className="text-sm text-red-500/80">आज (12:00 PM)</p>
                         </CardContent>
                     </Card>
-                    <Card className="bg-yellow-50 border-yellow-200">
+                    <Card className="bg-yellow-500/10 border-yellow-500/20">
                         <CardContent className="p-3">
-                            <p className="font-bold text-yellow-800">🟡 शिक्षक उपस्थिति 62%</p>
-                             <p className="text-sm text-yellow-600">(सामान्य से कम)</p>
+                            <p className="font-bold text-yellow-500">🟡 शिक्षक उपस्थिति 62%</p>
+                             <p className="text-sm text-yellow-500/80">(सामान्य से कम)</p>
                         </CardContent>
                     </Card>
                 </div>
@@ -78,11 +78,11 @@ export function DashboardSidebar() {
 
         <div className="mt-auto p-2 border-t">
              <div className="flex justify-around">
-                <button className="flex flex-col items-center text-muted-foreground hover:text-primary"><Home size={20}/><span className="text-xs">होम</span></button>
-                <button className="flex flex-col items-center text-primary font-bold"><BarChart2 size={20}/><span className="text-xs">डैशबोर्ड</span></button>
-                <button className="flex flex-col items-center text-muted-foreground hover:text-primary"><Video size={20}/><span className="text-xs">CCTV</span></button>
-                <button className="flex flex-col items-center text-muted-foreground hover:text-primary"><MessageSquare size={20}/><span className="text-xs">फीडबैक</span></button>
-                <button className="flex flex-col items-center text-muted-foreground hover:text-primary"><User size={20}/><span className="text-xs">प्रोफाइल</span></button>
+                <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Home size={20}/><span className="text-xs">होम</span></Link>
+                <Link href="/school-dashboard" className="flex flex-col items-center text-primary font-bold"><BarChart2 size={20}/><span className="text-xs">डैशबोर्ड</span></Link>
+                <Link href="/school-dashboard" className="flex flex-col items-center text-muted-foreground hover:text-primary"><Video size={20}/><span className="text-xs">CCTV</span></Link>
+                <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><MessageSquare size={20}/><span className="text-xs">फीडबैक</span></Link>
+                <Link href="/settings" className="flex flex-col items-center text-muted-foreground hover:text-primary"><User size={20}/><span className="text-xs">प्रोफाइल</span></Link>
             </div>
         </div>
     </div>
