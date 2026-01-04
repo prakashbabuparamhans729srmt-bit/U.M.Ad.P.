@@ -72,7 +72,7 @@ export default function AnalysisReportPage() {
                             </Button>
                              <Button variant="outline" size="icon">
                                 <Share2 className="h-4 w-4" />
-                                <span className_name="sr-only">Share Report</span>
+                                <span className="sr-only">Share Report</span>
                             </Button>
                         </div>
                         <div className="text-center">
