@@ -19,8 +19,17 @@ export default function CctvDetailPage({ params }: { params: { slug: string } })
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center mb-4">
-                        <p className="text-muted-foreground">[कक्षा]</p>
+                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center mb-4 overflow-hidden">
+                        <video 
+                            src="/placeholder.mp4" 
+                            className="w-full h-full object-cover" 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
+                        >
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                     <div>
                         <h4 className="font-semibold mb-2">AI विश्लेषण:</h4>
