@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -19,12 +20,45 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
-import { ArrowLeft, User, Bell, Palette } from "lucide-react"
+import { ArrowLeft, User, Bell, Palette, Download } from "lucide-react"
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed';
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
 
 export default function SchoolSettingsPage() {
+  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setInstallPrompt(e as BeforeInstallPromptEvent);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = () => {
+    if (!installPrompt) {
+      return;
+    }
+    installPrompt.prompt();
+    installPrompt.userChoice.then(() => {
+      setInstallPrompt(null);
+    });
+  };
+
   return (
     <div className="flex justify-center items-start min-h-screen p-4">
         <div className="w-full max-w-2xl space-y-6">
@@ -45,6 +79,10 @@ export default function SchoolSettingsPage() {
                     <TabsTrigger value="notifications">
                         <Bell className="mr-2 h-4 w-4" />
                         सूचनाएं
+                    </TabsTrigger>
+                     <TabsTrigger value="install">
+                        <Download className="mr-2 h-4 w-4" />
+                        ऐप इंस्टॉल करें
                     </TabsTrigger>
                 </TabsList>
                 <TabsContent value="profile">
@@ -112,6 +150,32 @@ export default function SchoolSettingsPage() {
                     <Button>प्राथमिकताएं सहेजें</Button>
                     </CardFooter>
                 </Card>
+                </TabsContent>
+                 <TabsContent value="install">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>ऐप इंस्टॉल करें</CardTitle>
+                      <CardDescription>
+                        बेहतर अनुभव के लिए इस ऐप को अपने डिवाइस पर इंस्टॉल करें।
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        ऐप इंस्टॉल करने से आप इसे सीधे अपनी होम स्क्रीन से लॉन्च कर सकते हैं, ठीक किसी अन्य ऐप की तरह।
+                      </p>
+                    </CardContent>
+                    <CardFooter>
+                      {installPrompt && (
+                        <Button onClick={handleInstallClick}>
+                          <Download className="mr-2 h-4 w-4" />
+                          ऐप इंस्टॉल करें
+                        </Button>
+                      )}
+                      {!installPrompt && (
+                        <p className="text-sm text-green-600">ऐप पहले से इंस्टॉल है या आपका ब्राउज़र इसे सपोर्ट नहीं करता।</p>
+                      )}
+                    </CardFooter>
+                  </Card>
                 </TabsContent>
             </Tabs>
             <Link href="/school-dashboard" className="w-full">
