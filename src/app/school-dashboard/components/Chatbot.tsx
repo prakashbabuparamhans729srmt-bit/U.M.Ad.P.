@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { schoolCopilot } from '@/ai/flows/school-copilot';
 
 type Message = {
   role: 'user' | 'model';
@@ -88,30 +87,15 @@ export function Chatbot() {
     const userMessage: Message = { role: 'user', content: [{ text: input }] };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-    const currentInput = input;
     setInput('');
     setLoading(true);
 
-    try {
-        const history = newMessages.slice(0, -1).map(msg => ({
-            role: msg.role,
-            content: msg.content.map(c => ({ text: c.text }))
-        }));
-
-      const modelResponse = await schoolCopilot({
-        history: history,
-        input: currentInput,
-      });
-
-      const modelMessage: Message = { role: 'model', content: [{ text: modelResponse }] };
-      setMessages(prev => [...prev, modelMessage]);
-    } catch (error) {
-      console.error("AI Error:", error);
-      const errorMessage: Message = { role: 'model', content: [{ text: "माफ़ कीजिए, कुछ तकनीकी समस्या आ गई है।" }] };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
-      setLoading(false);
-    }
+    // Simulate a response since AI is removed
+    setTimeout(() => {
+        const modelMessage: Message = { role: 'model', content: [{ text: "नमस्ते! मैं अभी आपकी कैसे मदद कर सकता हूँ?" }] };
+        setMessages(prev => [...prev, modelMessage]);
+        setLoading(false);
+    }, 1000);
   };
 
   return (
