@@ -14,12 +14,22 @@ type Message = {
   content: { text: string }[];
 };
 
+// SpeechRecognition might not be available, so we need to declare it
+declare global {
+    interface Window {
+      SpeechRecognition: any;
+      webkitSpeechRecognition: any;
+    }
+}
+
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -29,8 +39,48 @@ export function Chatbot() {
         }
     }
   }, [messages, loading]);
+  
+  useEffect(() => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.lang = 'hi-IN'; // Set language to Hindi
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        setIsRecording(true);
+      };
+
+      recognition.onend = () => {
+        setIsRecording(false);
+      };
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+      };
+      
+      recognition.onerror = (event: any) => {
+        console.error("Speech recognition error", event.error);
+        setIsRecording(false);
+      };
+
+      recognitionRef.current = recognition;
+    }
+  }, []);
 
   const toggleChat = () => setIsOpen(!isOpen);
+
+  const handleMicClick = () => {
+    if (!recognitionRef.current) return;
+
+    if (isRecording) {
+      recognitionRef.current.stop();
+    } else {
+      recognitionRef.current.start();
+    }
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -38,6 +88,7 @@ export function Chatbot() {
     const userMessage: Message = { role: 'user', content: [{ text: input }] };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
+    const currentInput = input;
     setInput('');
     setLoading(true);
 
@@ -49,7 +100,7 @@ export function Chatbot() {
 
       const modelResponse = await schoolCopilot({
         history: history,
-        input: input,
+        input: currentInput,
       });
 
       const modelMessage: Message = { role: 'model', content: [{ text: modelResponse }] };
@@ -127,7 +178,13 @@ export function Chatbot() {
               <Button size="icon" onClick={handleSend} disabled={loading}>
                 <Send className="h-4 w-4" />
               </Button>
-              <Button size="icon" variant="outline" disabled={loading}>
+              <Button 
+                size="icon" 
+                variant="outline" 
+                onClick={handleMicClick} 
+                disabled={loading || !recognitionRef.current}
+                className={isRecording ? 'text-red-500 border-red-500' : ''}
+              >
                 <Mic className="h-4 w-4" />
               </Button>
             </div>
