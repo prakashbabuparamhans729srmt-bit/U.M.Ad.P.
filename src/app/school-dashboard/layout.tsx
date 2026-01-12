@@ -1,5 +1,6 @@
 import React from 'react';
 import { DashboardSidebar } from './components/DashboardSidebar';
+import { Chatbot } from './components/Chatbot';
 
 export default function SchoolDashboardLayout({
   children,
@@ -12,6 +13,7 @@ export default function SchoolDashboardLayout({
       <aside className="hidden lg:block w-[350px] flex-shrink-0">
         <DashboardSidebar />
       </aside>
+      <Chatbot />
     </div>
   );
 }
