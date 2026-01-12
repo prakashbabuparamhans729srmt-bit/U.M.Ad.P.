@@ -39,7 +39,7 @@ export default function SchoolSettingsPage() {
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
-      setInstallPrompt(e as BeforeInstallPromptEvent);
+      setInstallPrompt(e as BeforeInstallİnstallPromptEvent);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -165,12 +165,10 @@ export default function SchoolSettingsPage() {
                       </p>
                     </CardContent>
                     <CardFooter>
-                      {installPrompt && (
-                        <Button onClick={handleInstallClick}>
+                        <Button onClick={handleInstallClick} disabled={!installPrompt}>
                           <Download className="mr-2 h-4 w-4" />
                           ऐप इंस्टॉल करें
                         </Button>
-                      )}
                     </CardFooter>
                   </Card>
                 </TabsContent>
