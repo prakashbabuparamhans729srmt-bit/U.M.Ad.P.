@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { schoolCopilot } from '@/ai/flows/school-copilot';
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,21 +24,12 @@ export function Chatbot() {
     setInput('');
     setLoading(true);
 
-    try {
-      const history = messages.map(m => ({role: m.role, content: [{text: m.text}]}));
-      const response = await schoolCopilot({
-          history: history,
-          input: input
-      });
-      const modelMessage = { role: 'model' as const, text: response };
+    // Simulate AI response
+    setTimeout(() => {
+      const modelMessage = { role: 'model' as const, text: "माफ़ कीजिए, यह सुविधा अभी उपलब्ध नहीं है।" };
       setMessages(prev => [...prev, modelMessage]);
-    } catch (error) {
-      console.error("Error calling AI:", error);
-      const errorMessage = { role: 'model' as const, text: "Sorry, I'm having trouble connecting to the AI." };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -86,7 +76,7 @@ export function Chatbot() {
                     <AvatarFallback>AI</AvatarFallback>
                   </Avatar>
                   <div className="rounded-lg px-3 py-2 bg-muted">
-                    <p>Thinking...</p>
+                    <p>सोच रहा हूँ...</p>
                   </div>
                 </div>
               )}
@@ -95,7 +85,7 @@ export function Chatbot() {
           <div className="p-4 border-t">
             <div className="flex items-center gap-2">
               <Input
-                placeholder="Ask a question..."
+                placeholder="एक प्रश्न पूछें..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
