@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useToast } from '@/hooks/use-toast';
 
 type Message = {
   role: 'user' | 'model';
@@ -29,6 +30,7 @@ export function Chatbot() {
   const [isRecording, setIsRecording] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -61,13 +63,21 @@ export function Chatbot() {
       };
       
       recognition.onerror = (event: any) => {
-        console.error("Speech recognition error", event.error);
+        if (event.error === 'not-allowed') {
+          toast({
+            variant: 'destructive',
+            title: 'माइक्रोफ़ोन अनुमति आवश्यक है',
+            description: 'बोलकर लिखने की सुविधा का उपयोग करने के लिए कृपया अपनी ब्राउज़र सेटिंग्स में माइक्रोफ़ोन की अनुमति दें।',
+          });
+        } else {
+          console.error("Speech recognition error", event.error);
+        }
         setIsRecording(false);
       };
 
       recognitionRef.current = recognition;
     }
-  }, []);
+  }, [toast]);
 
   const toggleChat = () => setIsOpen(!isOpen);
 
