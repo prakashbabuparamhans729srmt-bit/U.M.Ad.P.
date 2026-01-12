@@ -29,10 +29,23 @@ const responses: { [key: string]: string } = {
   'भोजन': 'आज मध्याह्न भोजन नहीं बना क्योंकि रसोइया अनुपस्थित थे। इस सप्ताह भोजन की गुणवत्ता की औसत रेटिंग 4/5 स्टार रही है।',
   'cctv': 'CCTV फीड लाइव है। कक्षा 8 का CCTV 2 दिन से बंद है और कक्षा 9 B में कम रोशनी की चेतावनी है।',
   'संपर्क': 'प्रिंसिपल का नंबर 9829012345 है और शिकायत हेल्पलाइन 1800-XXX-XXXX है। क्या आपको और कोई जानकारी चाहिए?',
+  'summary': `ज़रूर! यहाँ स्कूल की A-Z जानकारी का सारांश है:
+- **समग्र स्थिति:** 85% (कार्यशील)
+- **शिक्षक उपस्थिति:** 62% (कम)
+- **छात्र उपस्थिति:** 342/500
+- **मध्याह्न भोजन:** आज नहीं बना
+- **CCTV अलर्ट:** कक्षा 8 का CCTV बंद है
+- **प्रिंसिपल संपर्क:** 9829012345
+
+अधिक जानकारी के लिए कृपया विशिष्ट प्रश्न पूछें।`
 };
 
 const getResponse = (input: string): string => {
   const lowerInput = input.toLowerCase();
+  
+  if (lowerInput.includes('a to z') || lowerInput.includes('सब कुछ') || lowerInput.includes('all details') || lowerInput.includes('पूरी जानकारी') || lowerInput.includes('a-z')) {
+    return responses['summary'];
+  }
   if (lowerInput.includes('स्थिति') || lowerInput.includes('status')) {
     return responses['स्थिति'];
   }
@@ -166,7 +179,7 @@ export function Chatbot() {
                     </Avatar>
                   )}
                   <div className={`rounded-lg px-3 py-2 ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                    {message.content.map((c, i) => <p key={i}>{c.text}</p>)}
+                    {message.content.map((c, i) => <p key={i} className="whitespace-pre-wrap">{c.text}</p>)}
                   </div>
                    {message.role === 'user' && (
                     <Avatar className="w-8 h-8">
