@@ -20,7 +20,6 @@ export const schoolCopilot = ai.defineFlow(
     outputSchema: z.string(),
   },
   async ({history, input}) => {
-    const llm = ai.getModel('googleai/gemini-2.5-flash');
     const prompt = `You are an AI assistant for a school monitoring dashboard. 
     Your role is to answer questions from administrators, officials, and principals based on the provided context.
     Use a helpful and professional tone.
@@ -41,7 +40,8 @@ export const schoolCopilot = ai.defineFlow(
     Query: ${input}
     `;
 
-    const result = await llm.generate({
+    const result = await ai.generate({
+        model: 'googleai/gemini-2.5-flash',
         prompt: prompt,
         history: history,
     });
