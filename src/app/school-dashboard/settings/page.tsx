@@ -25,7 +25,7 @@ import Link from "next/link"
 import { ArrowLeft, User, Bell, Palette, Download } from "lucide-react"
 
 interface BeforeInstallPromptEvent extends Event {
-  readonly platforms: string[];
+  readonly platforms: Array<string>;
   readonly userChoice: Promise<{
     outcome: 'accepted' | 'dismissed';
     platform: string;
@@ -39,7 +39,7 @@ export default function SchoolSettingsPage() {
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
-      setInstallPrompt(e as BeforeInstallİnstallPromptEvent);
+      setInstallPrompt(e as BeforeInstallPromptEvent);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
