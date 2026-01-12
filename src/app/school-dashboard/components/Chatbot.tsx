@@ -22,6 +22,36 @@ declare global {
     }
 }
 
+const responses: { [key: string]: string } = {
+  'default': 'नमस्ते! मैं स्कूल डैशबोर्ड कॉपिलॉट हूँ। मैं आपकी क्या मदद कर सकता हूँ? आप मुझसे \'स्कूल की स्थिति\', \'शिक्षक उपस्थिति\', \'मध्याह्न भोजन\' या \'संपर्क जानकारी\' के बारे में पूछ सकते हैं।',
+  'स्थिति': 'स्कूल की समग्र स्थिति 85% है, जिसे \'कार्यशील\' माना जाता है। अधिक जानकारी के लिए, आप मुख्य डैशबोर्ड देख सकते हैं।',
+  'उपस्थिति': 'आज शिक्षकों की उपस्थिति 62% है, जो सामान्य से कम है। छात्रों की कुल उपस्थिति 342/500 है। विस्तृत विश्लेषण के लिए AI विश्लेषण रिपोर्ट देखें।',
+  'भोजन': 'आज मध्याह्न भोजन नहीं बना क्योंकि रसोइया अनुपस्थित थे। इस सप्ताह भोजन की गुणवत्ता की औसत रेटिंग 4/5 स्टार रही है।',
+  'cctv': 'CCTV फीड लाइव है। कक्षा 8 का CCTV 2 दिन से बंद है और कक्षा 9 B में कम रोशनी की चेतावनी है।',
+  'संपर्क': 'प्रिंसिपल का नंबर 9829012345 है और शिकायत हेल्पलाइन 1800-XXX-XXXX है। क्या आपको और कोई जानकारी चाहिए?',
+};
+
+const getResponse = (input: string): string => {
+  const lowerInput = input.toLowerCase();
+  if (lowerInput.includes('स्थिति') || lowerInput.includes('status')) {
+    return responses['स्थिति'];
+  }
+  if (lowerInput.includes('उपस्थिति') || lowerInput.includes('attendance')) {
+    return responses['उपस्थिति'];
+  }
+  if (lowerInput.includes('भोजन') || lowerInput.includes('meal')) {
+    return responses['भोजन'];
+  }
+  if (lowerInput.includes('cctv')) {
+    return responses['cctv'];
+  }
+  if (lowerInput.includes('संपर्क') || lowerInput.includes('contact')) {
+    return responses['संपर्क'];
+  }
+  return responses['default'];
+};
+
+
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -95,14 +125,14 @@ export function Chatbot() {
     if (!input.trim()) return;
 
     const userMessage: Message = { role: 'user', content: [{ text: input }] };
-    const newMessages = [...messages, userMessage];
-    setMessages(newMessages);
+    setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
 
     // Simulate a response since AI is removed
     setTimeout(() => {
-        const modelMessage: Message = { role: 'model', content: [{ text: "नमस्ते! मैं अभी आपकी कैसे मदद कर सकता हूँ?" }] };
+        const responseText = getResponse(input);
+        const modelMessage: Message = { role: 'model', content: [{ text: responseText }] };
         setMessages(prev => [...prev, modelMessage]);
         setLoading(false);
     }, 1000);
