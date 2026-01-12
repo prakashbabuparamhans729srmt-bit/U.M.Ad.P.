@@ -171,9 +171,6 @@ export default function SchoolSettingsPage() {
                           ऐप इंस्टॉल करें
                         </Button>
                       )}
-                      {!installPrompt && (
-                        <p className="text-sm text-green-600">ऐप पहले से इंस्टॉल है या आपका ब्राउज़र इसे सपोर्ट नहीं करता।</p>
-                      )}
                     </CardFooter>
                   </Card>
                 </TabsContent>
