@@ -37,7 +37,16 @@ const responses: { [key: string]: string } = {
 - **CCTV अलर्ट:** कक्षा 8 का CCTV बंद है
 - **प्रिंसिपल संपर्क:** 9829012345
 
-अधिक जानकारी के लिए कृपया विशिष्ट प्रश्न पूछें।`
+अधिक जानकारी के लिए कृपया विशिष्ट प्रश्न पूछें।`,
+  'details': `विस्तृत जानकारी के लिए, आप निम्नलिखित पेज देख सकते हैं:
+- [AI विश्लेषण रिपोर्ट](/school-dashboard/analysis)
+- [शिक्षक विवरण](/school-dashboard/teachers)
+- [नागरिक फीडबैक](/school-dashboard/feedback)
+- [महत्वपूर्ण संपर्क](/school-dashboard/contacts)
+- [बुनियादी ढांचा रिपोर्ट](/school-dashboard/infrastructure)
+- [मध्याह्न भोजन रिपोर्ट](/school-dashboard/meal-report)
+
+आप इनमें से किसी भी विषय के बारे में पूछ सकते हैं।`
 };
 
 const getResponse = (input: string): string => {
@@ -45,6 +54,9 @@ const getResponse = (input: string): string => {
   
   if (lowerInput.includes('a to z') || lowerInput.includes('सब कुछ') || lowerInput.includes('all details') || lowerInput.includes('पूरी जानकारी') || lowerInput.includes('a-z')) {
     return responses['summary'];
+  }
+  if (lowerInput.includes('vistar se') || lowerInput.includes('विस्तार से') || lowerInput.includes('details') || lowerInput.includes('और बताओ')) {
+    return responses['details'];
   }
   if (lowerInput.includes('स्थिति') || lowerInput.includes('status')) {
     return responses['स्थिति'];
