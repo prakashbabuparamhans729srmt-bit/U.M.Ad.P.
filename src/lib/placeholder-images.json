@@ -23,6 +23,12 @@
       "description": "Promotional banner 3",
       "imageUrl": "https://images.unsplash.com/photo-1763888477145-25f2a823ad31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwb2ZmZXJ8ZW58MHx8fHwxNzY0NTU0NjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "product offer"
+    },
+    {
+      "id": "entry-background",
+      "description": "Entry page background image",
+      "imageUrl": "https://images.unsplash.com/photo-1620121692029-d088224ddc74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzcwNDAzNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract background"
     }
   ]
 }
