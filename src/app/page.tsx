@@ -13,11 +13,11 @@ export default function EntryPage() {
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2 xl:min-h-screen">
       <div className="flex items-center justify-center py-12">
-        <div className="mx-auto grid w-[350px] gap-6">
+        <div className="mx-auto grid w-[380px] gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Sign Up</h1>
+            <h1 className="text-3xl font-bold">Create an Account</h1>
             <p className="text-balance text-muted-foreground">
-              Enter your details below to create your account
+              Enter your details below to join us
             </p>
           </div>
           <Tabs defaultValue="email" className="w-full">
@@ -29,6 +29,16 @@ export default function EntryPage() {
                 <Card className="border-none shadow-none">
                     <CardContent className="pt-6 px-0">
                         <div className="grid gap-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="grid gap-2">
+                                    <Label htmlFor="first-name">First Name</Label>
+                                    <Input id="first-name" placeholder="Max" required />
+                                </div>
+                                <div className="grid gap-2">
+                                    <Label htmlFor="last-name">Last Name</Label>
+                                    <Input id="last-name" placeholder="Robinson" required />
+                                </div>
+                            </div>
                             <div className="grid gap-2">
                                 <Label htmlFor="email">Email</Label>
                                 <Input
@@ -42,9 +52,9 @@ export default function EntryPage() {
                                 <Label htmlFor="password">Password</Label>
                                 <Input id="password" type="password" required />
                             </div>
-                            <Link href="/school-dashboard">
+                            <Link href="/dashboard">
                                 <Button type="submit" className="w-full">
-                                    Sign Up with Email
+                                    Create Account
                                 </Button>
                             </Link>
                         </div>
@@ -64,14 +74,9 @@ export default function EntryPage() {
                                 required
                                 />
                             </div>
-                             <div className="grid gap-2">
-                                <Label htmlFor="otp">One-Time Password (OTP)</Label>
-                                <Input id="otp" type="text" placeholder="6-digit OTP" required />
-                            </div>
-                            <Button variant="outline" className="w-full">Send OTP</Button>
-                            <Link href="/school-dashboard">
+                            <Link href="/verify-otp">
                                 <Button type="submit" className="w-full">
-                                    Sign Up with Mobile
+                                    Send OTP
                                 </Button>
                             </Link>
                         </div>

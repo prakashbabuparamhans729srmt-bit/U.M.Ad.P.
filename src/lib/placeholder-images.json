@@ -29,6 +29,12 @@
       "description": "Entry page background image",
       "imageUrl": "https://images.unsplash.com/photo-1620121692029-d088224ddc74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzcwNDAzNDgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract background"
+    },
+    {
+      "id": "auth-background",
+      "description": "Authentication page background image",
+      "imageUrl": "https://images.unsplash.com/photo-1554224155-8d044b408261?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdXRoZW50aWNhdGlvbiUyMHNlY3VyaXR5fGVufDB8fHx8MTc3MDQyMDYxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "authentication security"
     }
   ]
 }

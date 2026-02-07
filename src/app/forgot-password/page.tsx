@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
   const authImage = PlaceHolderImages.find(p => p.id === 'auth-background');
 
   return (
@@ -14,9 +14,9 @@ export default function LoginPage() {
       <div className="flex items-center justify-center py-12">
         <Card className="mx-auto w-[380px] max-w-md border-0 shadow-none">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold">Welcome Back!</CardTitle>
+            <CardTitle className="text-3xl font-bold">Forgot Your Password?</CardTitle>
             <CardDescription>
-              Enter your credentials to access your account.
+              No worries! Enter your email address and we'll send you a link to reset it.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -30,34 +30,20 @@ export default function LoginPage() {
                   required
                 />
               </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="/forgot-password"
-                    className="ml-auto inline-block text-sm underline"
-                  >
-                    Forgot your password?
-                  </Link>
-                </div>
-                <Input id="password" type="password" required />
-              </div>
-              <Link href="/dashboard" className="w-full">
-                  <Button className="w-full">
-                  Sign In
-                  </Button>
-              </Link>
+              <Button type="submit" className="w-full">
+                Send Reset Link
+              </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <Link href="/" className="underline">
-                Sign up
+              Remembered your password?{" "}
+              <Link href="/login" className="underline">
+                Sign in
               </Link>
             </div>
           </CardContent>
         </Card>
       </div>
-      <div className="hidden bg-muted lg:block relative">
+       <div className="hidden bg-muted lg:block relative">
         {authImage && (
             <Image
             src={authImage.imageUrl}
